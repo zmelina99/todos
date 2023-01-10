@@ -1,8 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Checkbox from './atoms/checkbox/checkbox';
 import { Category } from './atoms/category';
+import { Button } from './atoms/button';
+import { DropdownSelect } from './molecules/dropdownSelect';
 
 export interface ICategory {
   name: string;
@@ -22,6 +23,8 @@ function App() {
     <div className="App">
       <Checkbox checked={true} />
       <Category {...Object.values(categories)[0]} />
+      <Button variant='primary' label='click'/>
+      <DropdownSelect dropdownOptions={['groceries', 'bananas']} placeholder='Select category'/>
     </div>
   );
 }

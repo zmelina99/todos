@@ -1,0 +1,16 @@
+@import '../../../styles/colors.scss';
+
+.Button {
+  padding: 1rem;
+  border-radius: 16px;
+  border: none;
+
+  &--primary {
+    background-image: $base-gradient;
+    color: pink;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}

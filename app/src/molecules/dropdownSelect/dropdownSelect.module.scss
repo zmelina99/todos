@@ -1,0 +1,37 @@
+
+
+.Dropdown {
+  position: relative;
+  border-radius: 8px;
+}
+
+.Dropdown__Input {
+
+  background-color: white;
+  border: none;
+  outline: none;;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+  align-items: center;
+  text-transform: capitalize;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.Dropdown__Options {
+  background-color: white;
+  width: 350px;
+  position: absolute;
+  z-index: 10;
+  margin-top: .5rem;
+  border-radius: 8px;
+}
+
+.Dropdown__Input.parentWidth,
+.Dropdown__Options.parentWidth {
+  width: 100%;
+}
