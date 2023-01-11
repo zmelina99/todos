@@ -16,16 +16,9 @@ export interface ICategory {
   category_id: number;
 }
 
-const cats: Record<string, ICategory> = {
-  1: {
-    name: 'groceries',
-    color: '#27AE60',
-    category_id: 1,
-  },
-};
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState<any[]>([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(0);
 
@@ -55,7 +48,15 @@ function App() {
           setSelectedCategory={setSelectedCategory}
           isSelected={selectedCategory}
         />
-        <Todos category={'all tasks'} tasks={todos} categories={categories}/>
+        <Todos
+          category={'all tasks'}
+          tasks={
+            selectedCategory !== 0
+              ? todos.filter((todo) => todo.category_id === selectedCategory)
+              : todos
+          }
+          categories={categories}
+        />
       </div>
     </div>
   );

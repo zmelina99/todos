@@ -27,7 +27,7 @@ const Todos: React.FC<ITodos> = ({ category, tasks, categories }) => {
             variant="primary"
             label="Add Todo"
             icon={<AiOutlinePlus />}
-            onClick={() => setShowAddTodo(true)}
+            onClick={() => setShowAddTodo(!AddTodo)}
           />
         </div>
       </div>
