@@ -30,14 +30,22 @@ app.get('/categories/:id', getCategory);
 app.put('/todos/:id', async (req, res) => {
   //await waits for the function to complete before it continues
   try {
-    const { description } = req.body;
+    const { description, completed } = req.body;
     const { id } = req.params;
-    const updateTodo = await pool.query(
-      //   `UPDATE todo SET description = ${description} WHERE todo_id = ${id}`
-      `UPDATE todo SET description = $1 WHERE todo_id = $2`,
-      [description, id]
-    );
-    res.json(updateTodo.rows[0]);
+    if (description) {
+      const updateTodo = await pool.query(
+        `UPDATE todo SET description = $1 WHERE todo_id = $2`,
+        [description, id]
+      );
+      res.json(updateTodo.rows[0]);
+    } else {
+      console.log(completed)
+      const updateTodoState = await pool.query(
+        `UPDATE todo SET completed = $1 WHERE todo_id = $2`,
+        [completed, id]
+      );
+      res.json(updateTodoState.rows[0]);
+    }
     console.log('updated');
   } catch (err) {
     console.error(err.message);
