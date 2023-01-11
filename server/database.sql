@@ -15,7 +15,7 @@ DELETE  FROM categories
 WHERE category_id = 1;
 
 INSERT INTO categories 
-VALUES (1, 'groceries', 'orange');
+VALUES (2, 'sports', 'blue');
 
 
 ALTER TABLE categories
