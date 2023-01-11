@@ -4,6 +4,7 @@ import Checkbox from './atoms/checkbox/checkbox';
 import { Category } from './atoms/category';
 import { Button } from './atoms/button';
 import { DropdownSelect } from './molecules/dropdownSelect';
+import { AiOutlinePlus } from 'react-icons/ai';
 
 export interface ICategory {
   name: string;
@@ -23,7 +24,7 @@ function App() {
     <div className="App">
       <Checkbox checked={true} />
       <Category {...Object.values(categories)[0]} />
-      <Button variant='primary' label='click'/>
+      <Button variant='secondary' label='click' icon={<AiOutlinePlus/>}/>
       <DropdownSelect dropdownOptions={['groceries', 'bananas']} placeholder='Select category'/>
     </div>
   );

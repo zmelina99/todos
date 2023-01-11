@@ -4,13 +4,31 @@
   padding: 1rem;
   border-radius: 16px;
   border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
 
   &--primary {
     background-image: $base-gradient;
     color: pink;
   }
 
+  &--secondary {
+    color: $base-gray;
+    background-color: transparent;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   &:hover {
     cursor: pointer;
   }
+}
+.Button__Icon,
+.Button__Label {
+  margin: 0;
+  padding: 0;
 }

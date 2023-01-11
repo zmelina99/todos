@@ -1,0 +1,17 @@
+@import '../../../styles/colors.scss';
+
+.Checkbox {
+  border: 1px solid $base-red;
+  border-radius: 30%;
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+}
+.Checkbox__CheckedIcon {
+    position: absolute;
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    justify-content: center;
+    align-items: center;
+}
