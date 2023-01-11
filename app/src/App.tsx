@@ -39,7 +39,6 @@ function App() {
     setCategories(result.data);
   };
 
-  console.log(todos, categories);
   useEffect(() => {
     fetchTodos();
     fetchCategories();
@@ -56,7 +55,7 @@ function App() {
           setSelectedCategory={setSelectedCategory}
           isSelected={selectedCategory}
         />
-        <Todos category={'all tasks'} tasks={todos} />
+        <Todos category={'all tasks'} tasks={todos} categories={categories}/>
       </div>
     </div>
   );

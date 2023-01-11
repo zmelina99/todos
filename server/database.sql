@@ -19,14 +19,27 @@ VALUES (2, 'sports', 'blue');
 
 
 INSERT INTO todo 
-VALUES ( 1, 'play basketball', false);
+VALUES ( 'dance', true);
 
 
 ALTER TABLE categories
 ADD FOREIGN KEY (category_id) REFERENCES categories(category_id);
 
 ALTER TABLE todo 
-ADD COLUMN completed BOOLEAN NOT NULL;
+ADD COLUMN todo_id SERIAL PRIMARY KEY ;
+
+ALTER TABLE todo
+ADD COLUMN name VARCHAR(250)
+
+ALTER TABLE todo
+ADD COLUMN completed BOOLEAN;
 
 ALTER TABLE todo  
-DROP COLUMN completed;
+DROP COLUMN category_id;
+
+
+ ALTER TABLE todo 
+ ADD COLUMN category_id integer;
+
+ALTER TABLE todo ADD CONSTRAINT distfk FOREIGN KEY (category_id) REFERENCES categories (category_id);
+

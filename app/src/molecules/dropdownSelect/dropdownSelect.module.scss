@@ -3,6 +3,7 @@
 .Dropdown {
   position: relative;
   border-radius: 8px;
+  box-shadow: 0px 4px 4px 0px #00000040;
 }
 
 .Dropdown__Input {
@@ -13,7 +14,7 @@
   padding: 0.5rem;
   display: flex;
   justify-content: space-between;
-  width: 350px;
+  width: 9rem;
   align-items: center;
   text-transform: capitalize;
 
@@ -24,7 +25,7 @@
 
 .Dropdown__Options {
   background-color: white;
-  width: 350px;
+  width: 9rem;
   position: absolute;
   z-index: 10;
   margin-top: .5rem;

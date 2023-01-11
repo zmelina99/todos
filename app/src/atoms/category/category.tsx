@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './category.module.scss';
-import { AiOutlineCheck } from 'react-icons/ai';
 import { ICategory } from '../../App';
 
 const Category: React.FC<ICategory> = ({ name, color }) => {
