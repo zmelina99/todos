@@ -7,6 +7,9 @@
 .Todos__Header {
   display: flex;
   align-items: center;
+}
+.Todos__Title {
+  margin-right: 1rem;
   font-family: 'SF Pro';
   font-style: normal;
   font-weight: 700;
@@ -16,9 +19,11 @@
   text-transform: capitalize;
   margin-bottom: 1rem;
 }
-.Todos__Title {
-  margin-right: 1rem;
-}
 .Categories__Category__Selected {
   font-weight: 600;
+}
+
+.Todos__AddTodo {
+  position: absolute;
+  margin-top: .5rem;
 }

@@ -1,10 +1,23 @@
 .AddTodo {
   box-shadow: 0px 4px 4px 0px #00000040;
-  height: 10rem;
   width: 10rem;
   padding: 1rem;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  background-color: white;
+}
+.AddTodo__Input {
+}
+.AddTodo__Header {
+  margin-bottom: 1rem;
+}
+.AddTodo__Categories {
+  margin: 1rem 0;
+}
+.AddTodo__Name {
+}
+.AddTodo__Name__Label {
+  
 }

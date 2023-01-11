@@ -6,25 +6,33 @@ export interface IDropdown {
   dropdownOptions: string[];
   placeholder?: string;
   style?: React.CSSProperties;
+  onCallback(option: string): void;
 }
 
 const DropdownSelectComponent: React.FC<IDropdown> = ({
   dropdownOptions,
   placeholder,
   style,
+  onCallback,
 }) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedOption, setSelectedOption] = useState(
     placeholder || (dropdownOptions ? dropdownOptions[0] : '')
   );
 
-  const { Dropdown, Dropdown__Input, Dropdown__Options } = styles;
+  const {
+    Dropdown,
+    Dropdown__Input,
+    Dropdown__Options,
+    Dropdown__Options__Option,
+  } = styles;
 
   const menuRef = useRef<HTMLHeadingElement>(null);
 
   const handleClick = (option: string) => {
     setSelectedOption(option);
     setShowDropdown(!showDropdown);
+    onCallback(option);
   };
 
   const handleDropdownClick = (
@@ -62,7 +70,11 @@ const DropdownSelectComponent: React.FC<IDropdown> = ({
       {showDropdown && (
         <div className={Dropdown__Options} ref={menuRef}>
           {dropdownOptions.map((option: string) => (
-            <div key={option} onClick={() => handleClick(option)}>
+            <div
+              key={option}
+              className={Dropdown__Options__Option}
+              onClick={() => handleClick(option)}
+            >
               {option}
             </div>
           ))}

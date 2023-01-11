@@ -8,9 +8,10 @@ interface ITodo {
   task: string;
   isCompleted: boolean;
   id: number;
+  category?: string;
 }
 
-const Todo: React.FC<ITodo> = ({ task, id, isCompleted }) => {
+const Todo: React.FC<ITodo> = ({ task, id, isCompleted, category }) => {
   const [completed, setCompleted] = useState(isCompleted);
 
   const changeTaskState = async () => {
@@ -33,7 +34,7 @@ const Todo: React.FC<ITodo> = ({ task, id, isCompleted }) => {
       <span className={`${Todo__Task} ${completed && Todo__Task__Checked}`}>
         {task}
       </span>
-      <Category name={'Banana'} color={'blue'} category_id={0} />
+      <Category name={category} color={'blue'} category_id={0} />
     </div>
   );
 };

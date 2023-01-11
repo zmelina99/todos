@@ -11,7 +11,7 @@ import styles from './app.module.scss';
 import { Todos } from './organisms/todos';
 
 export interface ICategory {
-  name: string;
+  name?: string;
   color: string;
   category_id: number;
 }
@@ -19,7 +19,7 @@ export interface ICategory {
 
 function App() {
   const [todos, setTodos] = useState<any[]>([]);
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<any[]>([]);
   const [selectedCategory, setSelectedCategory] = useState(0);
 
   const fetchTodos = async () => {
@@ -37,7 +37,7 @@ function App() {
     fetchCategories();
   }, []);
 
-  console.log(selectedCategory);
+  console.log(todos);
   const { App__Title, App__MainComponents } = styles;
   return (
     <div className={styles.App}>

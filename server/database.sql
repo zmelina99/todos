@@ -35,7 +35,7 @@ ALTER TABLE todo
 ADD COLUMN completed BOOLEAN;
 
 ALTER TABLE todo  
-DROP COLUMN category_id;
+DROP COLUMN name;
 
 
  ALTER TABLE todo 

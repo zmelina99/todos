@@ -7,12 +7,12 @@ app.use(cors());
 app.use(express.json()); //gives us access to request the body and get json data
 
 async function addTodos(req, res) {
-  console.log(req.body, 'body')
+  console.log(req.body, 'body');
   try {
     const { name, category } = req.body.todoData;
     //await waits for the function to complete before it continues
     const newTodo = await pool.query(
-      'INSERT INTO todo(name, category_id) VALUES($1, $2) RETURNING *',
+      'INSERT INTO todo(todo_name, category_id) VALUES($1, $2) RETURNING *',
       [name, category]
     );
     res.json(newTodo.rows[0]);
@@ -25,7 +25,8 @@ async function addTodos(req, res) {
 
 async function getTodos(req, res) {
   try {
-    const allTodos = await pool.query('SELECT * FROM todo');
+    const allTodos = await pool.query('SELECT * FROM todo LEFT JOIN categories ON todo.category_id = categories.category_id'); 
+    
     res.json(allTodos.rows);
   } catch {
     console.error(err.message);

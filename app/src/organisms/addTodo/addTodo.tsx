@@ -18,7 +18,7 @@ const AddTodo: React.FC<IAddTodo> = ({ categories }) => {
     completed: false,
     category: 1,
   });
-
+  const [category, setCategory] = useState('');
   const addTodo = async () => {
     try {
       const result = await axios.post(`http://localhost:5000/todos`, {
@@ -29,6 +29,10 @@ const AddTodo: React.FC<IAddTodo> = ({ categories }) => {
       console.log(error);
     }
   };
+
+  const formatCategory = () => {
+
+  }
   const {
     AddTodo__Input,
     AddTodo__Header,
@@ -36,7 +40,7 @@ const AddTodo: React.FC<IAddTodo> = ({ categories }) => {
     AddTodo__Name,
     AddTodo__Name__Label,
   } = styles;
-
+  console.log(category);
   return (
     <div className={styles.AddTodo}>
       <div className={AddTodo__Header}>Add New ToDo!</div>
@@ -55,6 +59,7 @@ const AddTodo: React.FC<IAddTodo> = ({ categories }) => {
       <div className={AddTodo__Categories}>
         <DropdownSelect
           dropdownOptions={categories.map((category) => category.name)}
+          onCallback={(option) => setTodoData({...todoData, category: 2})}
         />
       </div>
       <Button label="Add" onClick={addTodo} />
