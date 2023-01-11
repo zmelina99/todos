@@ -2,49 +2,29 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const pool = require('./db');
+const todos = require('./controllers/todos');
+const categories = require('./controllers/categories');
+
 //middleware
 app.use(cors());
 app.use(express.json()); //gives us access to request the body and get json data
 
+const { addTodos, getTodos, getTodo } = todos;
+const { getCategories, getCategory } = categories;
 //routes
 
 //create a TODO
-app.post('/todos', async (req, res) => {
-  //await waits for the function to complete before it continues
-  try {
-    const { description } = req.body;
-    const newTodo = await pool.query(
-      'INSERT INTO todo(description) VALUES($1) RETURNING *',
-      [description]
-    );
-    res.json(newTodo.rows[0]);
-    //$1 is a placeholder and desciption is going to be the value
-    console.log(req.body);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
+app.post('/todos', addTodos);
 
 //get all TODOS
-app.get('/todos', async (req, res) => {
-  try {
-    const allTodos = await pool.query('SELECT * FROM todo');
-    res.json(allTodos.rows);
-  } catch {
-    console.error(err.message);
-  }
-});
+app.get('/todos', getTodos);
 
 //get a TODO
-app.get('/todos/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-    const todo = await pool.query(`SELECT * FROM todo WHERE todo_id = ${id} `);
-    res.json(todo.rows);
-  } catch {
-    console.error(err.message);
-  }
-});
+app.get('/todos/:id', getTodo);
+
+app.get('/categories', getCategories);
+
+app.get('/categories/:id', getCategory);
 
 //update a TODO
 app.put('/todos/:id', async (req, res) => {
@@ -69,7 +49,9 @@ app.delete('/todos/:id', async (req, res) => {
   //await waits for the function to complete before it continues
   try {
     const { id } = req.params;
-    const deleteTodo = await pool.query(`DELETE FROM todo WHERE todo_id = ${id}`);
+    const deleteTodo = await pool.query(
+      `DELETE FROM todo WHERE todo_id = ${id}`
+    );
     res.json('todo deleted');
   } catch (err) {
     console.error(err.message);
