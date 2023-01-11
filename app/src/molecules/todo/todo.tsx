@@ -16,7 +16,7 @@ const Todo: React.FC<ITodo> = ({ task, checked }) => {
       <span className={`${Todo__Task} ${checked && Todo__Task__Checked}`}>
         {task}
       </span>
-      <Category name={'Banana'} color={'blue'} id={0} />
+      <Category name={'Banana'} color={'blue'} category_id={0} />
     </div>
   );
 };

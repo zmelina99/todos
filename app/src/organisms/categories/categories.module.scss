@@ -1,0 +1,20 @@
+@import '../../../styles/colors.scss';
+
+.Categories {
+  height: 50vh;
+  padding: 2rem;
+  border-right: .5px solid rgb(208, 202, 202);
+}
+.Categories__Category {
+  text-transform: capitalize;
+  padding: 0.5rem;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.Categories__Default {
+  font-weight: 600;
+}
+.Categories__Category__Selected {
+  font-weight: 600;
+}
