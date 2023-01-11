@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Checkbox } from '../../atoms/checkbox';
 import { Category } from '../../atoms/category';
 import styles from './todo.module.scss';
@@ -9,12 +9,14 @@ interface ITodo {
 }
 
 const Todo: React.FC<ITodo> = ({ task, checked }) => {
-  const { Todo__checked, Todo__Task } = styles;
+  const { Todo__Checked, Todo__Task, Todo__Task__Checked } = styles;
   return (
-    <div className={`${styles.Todo} ${checked && Todo__checked}`}>
-      <Checkbox checked={false} />
-      <span className={Todo__Task}>{task}</span>
-      <Category name={''} color={''} id={0} />
+    <div className={`${styles.Todo} ${checked && Todo__Checked}`}>
+      <Checkbox checked={checked} />
+      <span className={`${Todo__Task} ${checked && Todo__Task__Checked}`}>
+        {task}
+      </span>
+      <Category name={'Banana'} color={'blue'} id={0} />
     </div>
   );
 };

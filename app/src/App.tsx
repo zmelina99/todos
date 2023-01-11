@@ -5,6 +5,7 @@ import { Category } from './atoms/category';
 import { Button } from './atoms/button';
 import { DropdownSelect } from './molecules/dropdownSelect';
 import { AiOutlinePlus } from 'react-icons/ai';
+import { Todo } from './molecules/todo';
 
 export interface ICategory {
   name: string;
@@ -26,6 +27,7 @@ function App() {
       <Category {...Object.values(categories)[0]} />
       <Button variant='secondary' label='click' icon={<AiOutlinePlus/>}/>
       <DropdownSelect dropdownOptions={['groceries', 'bananas']} placeholder='Select category'/>
+      <Todo task='Clean kitchen' checked={true} />
     </div>
   );
 }

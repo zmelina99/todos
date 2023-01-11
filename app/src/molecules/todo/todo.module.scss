@@ -1,17 +1,18 @@
 @import '../../../styles/colors.scss';
 
-.Checkbox {
-  border: 1px solid $base-red;
-  border-radius: 30%;
-  position: relative;
-  width: 2rem;
-  height: 2rem;
+.Todo {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+
+  &__Checked {
+    color: $base-red;
+  }
 }
-.Checkbox__CheckedIcon {
-    position: absolute;
-    display: flex;
-    width: 2rem;
-    height: 2rem;
-    justify-content: center;
-    align-items: center;
+.Todo__Task {
+  padding: 0 1rem;
+
+  &__Checked {
+    text-decoration: line-through;
+  }
 }
