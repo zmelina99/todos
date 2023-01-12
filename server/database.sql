@@ -26,7 +26,7 @@ ALTER TABLE categories
 ADD FOREIGN KEY (category_id) REFERENCES categories(category_id);
 
 ALTER TABLE todo 
-ADD COLUMN todo_id SERIAL PRIMARY KEY ;
+ADD COLUMN created_at DATE NOT NULL ;
 
 ALTER TABLE todo
 ADD COLUMN name VARCHAR(250)

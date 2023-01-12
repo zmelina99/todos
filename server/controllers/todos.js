@@ -9,11 +9,11 @@ app.use(express.json()); //gives us access to request the body and get json data
 async function addTodos(req, res) {
   console.log(req.body, 'body');
   try {
-    const { name, category } = req.body.formattedTodoData;
+    const { name, category, createdAt } = req.body.formattedTodoData;
     //await waits for the function to complete before it continues
     const newTodo = await pool.query(
-      'INSERT INTO todo(todo_name, category_id) VALUES($1, $2) RETURNING *',
-      [name, category]
+      'INSERT INTO todo(todo_name, category_id, created_at) VALUES($1, $2, $3) RETURNING *',
+      [name, category, createdAt]
     );
     res.json(newTodo.rows[0]);
     //$1 is a placeholder and desciption is going to be the value

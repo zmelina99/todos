@@ -2,8 +2,10 @@
 
 .Categories {
   height: 50vh;
-  padding: 2rem;
+  padding: 1rem;
   border-right: .5px solid rgb(208, 202, 202);
+  overflow: scroll;
+  position: relative;
 }
 .Categories__Category {
   text-transform: capitalize;
@@ -17,4 +19,10 @@
 }
 .Categories__Category__Selected {
   font-weight: 600;
+}
+
+.Categories__Button{
+position: sticky;
+bottom: -1rem;
+background-color: white;
 }

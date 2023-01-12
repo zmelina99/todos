@@ -6,6 +6,7 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import { AddComponent } from '../addComponent';
 import axios from 'axios';
 import useFetch from '../../hooks/useFetch';
+import useSetData from '../../hooks/useData';
 
 interface ICategories {
   categories: ICategory[];
@@ -30,11 +31,8 @@ const Categories: React.FC<ICategories> = ({
   setNewCategoryAdded,
 }) => {
   const [showAddCategory, setShowAddCategory] = useState(false);
-
-  const [categoryData, setCategoryData] = useState({
-    name: '',
-    color: 'pink',
-  });
+  //custom hook to update data for add component
+  const [categoryData, setData] = useSetData({ name: '', color: '' }, 'color');
   const { makeRequest } = useFetch();
 
   const addCategory = async () => {
@@ -44,13 +42,6 @@ const Categories: React.FC<ICategories> = ({
       setNewCategoryAdded(true);
     });
   };
-
-  const setData = (data: any | string) => {
-    if (typeof data === 'string') {
-      setCategoryData({ ...categoryData, color: data });
-    } else setCategoryData({ ...categoryData, name: data?.target.value });
-  };
-
   const {
     Categories__Category,
     Categories__Default,

@@ -6,6 +6,7 @@ import { Todo } from '../../molecules/todo';
 import { ICategory, ITodo } from '../../App';
 import AddComponent, { ITodoData } from '../addComponent/addComponent';
 import useFetch from '../../hooks/useFetch';
+import useSetData from '../../hooks/useData';
 
 interface ITodos {
   category: string;
@@ -21,34 +22,31 @@ const Todos: React.FC<ITodos> = ({
   setNewTodoAdded,
 }) => {
   const [showAddComponent, setShowAddComponent] = useState(false);
+  const [todoData, setData] = useSetData(
+    { name: '', category: 'default', completed: false },
+    'category'
+  );
 
-  const [todoData, setTodoData] = useState<ITodoData>({
-    name: '',
-    completed: false,
-    category: 'default',
-  });
   const { makeRequest } = useFetch();
 
   const addTodo = async () => {
     const formatCategory = categories.find(
       (category) => category.categoryName === todoData.category
     );
+    const currentTime = new Date();
+    const createdAt = currentTime.toISOString();
+
     const formattedTodoData = {
       name: todoData.name,
       completed: todoData.completed,
       category: formatCategory?.categoryId,
+      createdAt: createdAt,
     };
     const url = 'http://localhost:5000/todos';
     const body = { formattedTodoData };
     makeRequest(url, 'POST', body).then(() => {
       setNewTodoAdded(true);
     });
-  };
-
-  const setData = (data: any | string) => {
-    if (typeof data === 'string') {
-      setTodoData({ ...todoData, category: data });
-    } else setTodoData({ ...todoData, name: data?.target.value });
   };
 
   const { Todos__Title, Todos__Header, Todos__Button, Todos__AddComponent } =
