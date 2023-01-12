@@ -18,6 +18,10 @@
   &:hover {
     cursor: pointer;
   }
+
+  // &__ColorPalette{
+  //   justify-content: flex-end;
+  // }
 }
 
 .Dropdown__Options {
@@ -43,4 +47,11 @@
 .Dropdown__Input.parentWidth,
 .Dropdown__Options.parentWidth {
   width: 100%;
+}
+
+.color-palette {
+  padding: .5rem;
+  width: 1rem;
+  height: 1rem;
+  margin: .5rem;justify-self: center;
 }

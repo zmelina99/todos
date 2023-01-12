@@ -65,20 +65,24 @@ const DropdownSelectComponent: React.FC<IDropdown> = ({
         onKeyDown={(e) => handleDropdownClick(e)}
         tabIndex={0}
         role="button"
-        className={`${Dropdown__Input} ${Dropdown}`}
+        className={`${Dropdown__Input} ${type === 'color-palette' && styles.Dropdown__Input__ColorPalette} ${Dropdown}`}
         style={
           type === 'color-palette' ? { backgroundColor: selectedOption } : style
         }
       >
-        {selectedOption}
+        {type === 'color-palette' ? placeholder : selectedOption}
         <ChevronDown />
       </div>
       {showDropdown && (
-        <div className={Dropdown__Options} ref={menuRef} style={optionsStyle}>
+        <div
+          className={`${Dropdown__Options} `}
+          ref={menuRef}
+          style={optionsStyle}
+        >
           {dropdownOptions.map((option: string) => (
             <div
               key={option}
-              className={Dropdown__Options__Option}
+              className={`${Dropdown__Options__Option} ${styles[type]}`}
               onClick={() => handleClick(option)}
               style={
                 type === 'color-palette'
