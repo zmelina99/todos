@@ -41,7 +41,7 @@ const Todos: React.FC<ITodos> = ({ category, tasks, categories }) => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }; //Add to useApi hook
 
   const setData = (data: any | string) => {
     if (typeof data === 'string') {

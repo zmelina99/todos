@@ -17,7 +17,6 @@ const Todo: React.FC<ITodo> = ({ task, id, isCompleted, category, color }) => {
 
   const changeTaskState = async () => {
     setCompleted(!completed);
-    console.log(!completed);
     try {
       const result = await axios.put(`http://localhost:5000/todos/${id}`, {
         completed: !completed,
@@ -26,7 +25,7 @@ const Todo: React.FC<ITodo> = ({ task, id, isCompleted, category, color }) => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }; //FIXME Add to useApi hook
 
   const { Todo__Checked, Todo__Task, Todo__Task__Checked } = styles;
   return (
@@ -38,7 +37,7 @@ const Todo: React.FC<ITodo> = ({ task, id, isCompleted, category, color }) => {
       <Category
         categoryName={category}
         color={color ? color : 'transparent'}
-        categoryId={0}
+        categoryId={0} //FIXME
       />
     </div>
   );

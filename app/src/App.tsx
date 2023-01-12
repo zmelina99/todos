@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Categories } from './organisms/categories';
 import styles from './app.module.scss';
 import { Todos } from './organisms/todos';
-import { DropdownSelect } from './molecules/dropdownSelect';
 
 export interface ICategory {
   categoryName: string;
@@ -38,8 +37,6 @@ export interface ISelectedCategory {
   name: string;
   id: number;
 }
-
-//add newtodoadded boolean to make app more efficient and avoid continous rendering
 
 function App() {
   const [todos, setTodos] = useState<ITodo[]>([]);
@@ -80,7 +77,9 @@ function App() {
   useEffect(() => {
     fetchCategories();
   }, []);
-
+  //FIXME add newtodoadded boolean to make app more efficient and avoid continous rendering
+  //FIXME add custom hook to fetch
+  //FIXMEhttps://javascript.plainenglish.io/custom-hook-in-react-js-for-calling-api-useapi-7de24b42729c#:~:text=What%20is%20a%20custom%20hook%3F,be%20shared%20among%20different%20components.
   const { App__Title, App__MainComponents } = styles;
   return (
     <div className={styles.App}>

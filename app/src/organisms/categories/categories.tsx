@@ -42,7 +42,7 @@ const Categories: React.FC<ICategories> = ({
     } catch (error) {
       console.log(error);
     }
-  };
+  };//FIXME Add to useApi hook
 
   const setData = (data: any | string) => {
     if (typeof data === 'string') {

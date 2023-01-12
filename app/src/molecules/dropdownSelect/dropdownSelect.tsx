@@ -56,7 +56,7 @@ const DropdownSelectComponent: React.FC<IDropdown> = ({
     return () => {
       document.removeEventListener('click', handleOutsideClick, true);
     };
-  }, []);
+  }, []); //FIXME add this logic to AddComponent
 
   return (
     <div className={Dropdown}>
