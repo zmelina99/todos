@@ -3,7 +3,7 @@ import styles from './categories.module.scss';
 import { ICategory, ISelectedCategory } from '../../App';
 import { Button } from '../../atoms/button';
 import { AiOutlinePlus } from 'react-icons/ai';
-import { AddComponent } from '../addComponent';
+import { AddComponent } from '../../molecules/addComponent';
 import axios from 'axios';
 import useFetch from '../../hooks/useFetch';
 import useSetData from '../../hooks/useData';
@@ -36,11 +36,17 @@ const Categories: React.FC<ICategories> = ({
   const { makeRequest } = useFetch();
 
   const addCategory = async () => {
-    const url = 'http://localhost:5000/categories';
-    const body = { categoryData };
-    makeRequest(url, 'POST', body).then(() => {
-      setNewCategoryAdded(true);
-    });
+    if (categoryData.name.length >= 5) {
+      const url = 'http://localhost:5000/categories';
+      const body = { categoryData };
+      makeRequest(url, 'POST', body).then(() => {
+        setNewCategoryAdded(true);
+      });
+    }
+  };
+  const isDisabled = (): boolean => {
+    if (categoryData.name.length >= 5) return false;
+    else return true;
   };
   const {
     Categories__Category,
@@ -96,6 +102,7 @@ const Categories: React.FC<ICategories> = ({
             dropdownType="color-palette"
             dropdownPlaceholder="Choose color"
             closeAddComponent={() => setShowAddCategory(false)}
+            isDisabled={isDisabled}
           />
         )}
       </div>

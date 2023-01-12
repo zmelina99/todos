@@ -26,6 +26,9 @@
   &:hover {
     cursor: pointer;
   }
+  &:disabled {
+    cursor: unset;
+  }
 }
 .Button__Icon,
 .Button__Label {

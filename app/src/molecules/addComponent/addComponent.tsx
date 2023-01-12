@@ -1,7 +1,7 @@
 import React from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { Button } from '../../atoms/button';
-import { DropdownSelect } from '../../molecules/dropdownSelect';
+import { DropdownSelect } from '../dropdownSelect';
 import styles from './addComponent.module.scss';
 interface IAddComponent {
   title: string;
@@ -13,6 +13,7 @@ interface IAddComponent {
   dropdownType?: 'color-palette' | 'default';
   dropdownPlaceholder?: string;
   closeAddComponent(): void;
+  isDisabled(): boolean;
 }
 export interface ITodoData {
   name: string;
@@ -29,24 +30,27 @@ const AddComponent: React.FC<IAddComponent> = ({
   addValues,
   dropdownPlaceholder,
   closeAddComponent,
+  isDisabled,
 }) => {
   const {
     AddComponent__Input,
     AddComponent__Header,
     AddComponent__Header__Title,
     AddComponent__Header__Icon,
-
     AddComponent__Categories,
     AddComponent__Name,
     AddComponent__Name__Label,
   } = styles;
-
+console.log(isDisabled())
   return (
     <div className={styles.AddComponent}>
       <div className={AddComponent__Header}>
         <span className={AddComponent__Header__Title}>{title}</span>
-        <button className={AddComponent__Header__Icon} onClick={closeAddComponent}>
-          <AiOutlineClose size="20px"  />
+        <button
+          className={AddComponent__Header__Icon}
+          onClick={closeAddComponent}
+        >
+          <AiOutlineClose size="20px" />
         </button>
       </div>
 
@@ -67,7 +71,7 @@ const AddComponent: React.FC<IAddComponent> = ({
           type={dropdownType}
         />
       </div>
-      <Button label="Add" onClick={addValues} />
+      <Button label="Add" onClick={addValues} disabled={isDisabled()} />
     </div>
   );
 };

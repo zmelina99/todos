@@ -7,15 +7,19 @@ type ButtonProps = {
   icon?: ReactNode;
   color?: 'solid' | 'gradient';
 
-  disabled?: boolean;
 
   label: string;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
-const Button: React.FC<ButtonProps> = ({ variant, label, icon, ...props }) => {
+const Button: React.FC<ButtonProps> = ({
+  variant,
+  label,
+  icon,
+  ...props
+}) => {
   const { Button__Icon, Button__Label } = styles;
   return (
     <button
-      className={`${styles.Button} ${styles[`Button--${variant}`]} `}
+      className={`${styles.Button} ${styles[`Button--${variant}`]}`}
       {...props}
     >
       {icon && <span className={Button__Icon}> {icon}</span>}
