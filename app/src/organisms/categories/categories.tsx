@@ -1,18 +1,18 @@
 import React from 'react';
 import styles from './categories.module.scss';
-import { ICategory } from '../../App';
+import { ICategory, ISelectedCategory } from '../../App';
 import { Button } from '../../atoms/button';
 import { AiOutlinePlus } from 'react-icons/ai';
 
 interface ICategories {
   categories: ICategory[];
-  isSelected: number;
+  selectedCategory: ISelectedCategory;
   setSelectedCategory: any;
 }
 
 const Categories: React.FC<ICategories> = ({
   categories,
-  isSelected,
+  selectedCategory,
   setSelectedCategory,
 }) => {
   const {
@@ -25,23 +25,32 @@ const Categories: React.FC<ICategories> = ({
     <div className={styles.Categories}>
       <div
         className={`${
-          isSelected === 0 && Categories__Default
+          selectedCategory.id === 0 && Categories__Default
         } ${Categories__Category}`}
-        onClick={() => setSelectedCategory(0)}
+        onClick={() => setSelectedCategory({ name: 'default', id: 0 })}
       >
         All Tasks
       </div>
-      {categories.map((category, index) => (
-        <div
-          className={`${Categories__Category} ${
-            Number(isSelected) === index + 1 && Categories__Category__Selected
-          }`}
-          key={category.category_id}
-          onClick={() => setSelectedCategory(category.category_id)}
-        >
-          {category.categoryName}
-        </div>
-      ))}
+      {categories.map((category) => {
+        console.log(category.categoryId, 'me', selectedCategory.id);
+        return (
+          <div
+            className={`${Categories__Category} ${
+              selectedCategory.id === category.categoryId &&
+              Categories__Category__Selected
+            }`}
+            key={category.categoryId}
+            onClick={() =>
+              setSelectedCategory({
+                name: category.categoryName,
+                id: category.categoryId,
+              })
+            }
+          >
+            {category.categoryName}
+          </div>
+        );
+      })}
       <div className={Categories__Button}>
         <Button
           variant="secondary"

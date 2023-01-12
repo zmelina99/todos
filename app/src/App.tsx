@@ -7,7 +7,7 @@ import { Todos } from './organisms/todos';
 export interface ICategory {
   categoryName: string;
   color: string;
-  category_id: number;
+  categoryId: number;
 }
 
 export interface ICategoryResponse {
@@ -30,10 +30,18 @@ export interface ITodoResponse {
   category_id: number;
   category_name: string;
 }
+
+export interface ISelectedCategory {
+  name: string;
+  id: number;
+}
 function App() {
   const [todos, setTodos] = useState<ITodo[]>([]);
   const [categories, setCategories] = useState<ICategory[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState<ISelectedCategory>({
+    name: 'default',
+    id: 0,
+  });
 
   const fetchTodos = async () => {
     const result = await axios.get('http://localhost:5000/todos');
@@ -65,7 +73,7 @@ function App() {
     fetchCategories();
   }, []);
 
-  console.log(todos);
+  console.log(todos, selectedCategory);
   const { App__Title, App__MainComponents } = styles;
   return (
     <div className={styles.App}>
@@ -74,13 +82,13 @@ function App() {
         <Categories
           categories={categories}
           setSelectedCategory={setSelectedCategory}
-          isSelected={selectedCategory}
+          selectedCategory={selectedCategory}
         />
         <Todos
           category={'all tasks'}
           tasks={
-            selectedCategory !== 0
-              ? todos.filter((todo) => todo.categoryId === selectedCategory)
+            selectedCategory.id !== 0
+              ? todos.filter((todo) => todo.categoryId === selectedCategory.id)
               : todos
           }
           categories={categories}
