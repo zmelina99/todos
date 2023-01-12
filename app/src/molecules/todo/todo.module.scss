@@ -1,6 +1,7 @@
-@import '../../../styles/colors.scss';
+@import '../../../styles/colors.scss', '../../../styles/fonts.scss';
 
 .Todo {
+  @include x-smallFont;
   display: flex;
   padding: 0.25rem;
   align-items: center;

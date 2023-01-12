@@ -1,6 +1,7 @@
-@import '../../../styles/colors.scss';
+@import '../../../styles/colors.scss', '../../../styles/fonts.scss';
 
 .Category {
+  @include x-smallFont;
   padding: .75rem;
   width: fit-content;
   border-radius: 50px;

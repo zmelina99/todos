@@ -1,6 +1,7 @@
-@import '../../../styles/colors.scss';
+@import '../../../styles/colors.scss', '../../../styles/fonts.scss';
 
 .Button {
+  @include smallFont;
   padding: 1rem;
   border-radius: 16px;
   border: none;
@@ -8,17 +9,20 @@
   justify-content: center;
   align-items: center;
   margin: 0;
-  border: 1px solid #eb5757;
+  border: 1px solid $base-red;
+  color: $base-red;
+  font-weight: 600;
 
   &--primary {
     background-image: $base-gradient;
-    color: pink;
+    color: white;
   }
 
   &--secondary {
     color: $base-gray;
     background-color: transparent;
     border: none;
+    font-weight: 500;
 
     &:hover {
       text-decoration: underline;
@@ -31,6 +35,7 @@
   &:disabled {
     cursor: unset;
     border: none;
+    color: $base-gray;
   }
 }
 .Button__Icon,

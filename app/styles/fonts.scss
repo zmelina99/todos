@@ -1,0 +1,28 @@
+$mainFont: Arial, Helvetica, sans-serif;
+
+@mixin largeFont {
+  font: {
+    family: $mainFont;
+    size: 100px;
+  }
+}
+@mixin mediumFont {
+    font: {
+      family: $mainFont;
+      size: 50px;
+    }
+  }
+
+  @mixin smallFont {
+    font: {
+      family: $mainFont;
+      size: 20px;
+    }
+  }
+  @mixin x-smallFont {
+    font: {
+      family: $mainFont;
+      size: 16px;
+    }
+  }
+ 

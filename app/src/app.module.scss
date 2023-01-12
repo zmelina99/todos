@@ -1,25 +1,18 @@
-@import '../styles//colors.scss';
+@import '../styles//colors.scss', '../styles//fonts.scss';
 
 .App {
   display: flex;
   align-items: center;
   height: 100vh;
-  padding: 1rem;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 1.5rem;
 }
 .App__Title {
-  color: $base-gradient;
-  font-family: Inter;
-  font-style: Bold;
-  font-size: 117.75px;
-  line-height: 143px;
-  line-height: 100%;
-  text-align: Left;
-  vertical-align: Top;
-  letter-spacing: -3%;
+  text-align: left;
   text-transform: uppercase;
-  width: 30vw;
+  overflow:hidden;
+  @include  largeFont;
 }
 .App__MainComponents {
   display: flex;

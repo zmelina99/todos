@@ -72,7 +72,7 @@ const Todos: React.FC<ITodos> = ({
           {showAddComponent && (
             <div className={Todos__AddComponent}>
               <AddComponent
-                title={'Add New Todo!'}
+                title={'Add  Todo!'}
                 inputLabel={'Todo Name'}
                 inputValue={todoData.name}
                 setData={setData}

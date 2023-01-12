@@ -1,6 +1,7 @@
-@import '../../../styles/colors.scss';
+@import '../../../styles/colors.scss', '../../../styles/fonts.scss';
 
 .Categories {
+  @include x-smallFont;
   height: 50vh;
   padding: 1rem;
   border-right: .5px solid rgb(208, 202, 202);

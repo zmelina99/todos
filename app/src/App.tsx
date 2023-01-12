@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Categories } from './organisms/categories';
 import styles from './app.module.scss';
 import { Todos } from './organisms/todos';
+import MyModal from './templates/modal/modal';
+import Modal from './templates/modal/modal';
 
 export interface ICategory {
   categoryName: string;
@@ -100,30 +102,36 @@ function App() {
   useEffect(() => {
     if (newCategoryAdded) fetchCategories();
   }, [newCategoryAdded]);
+
+  const [showModal, setShowModal] = useState(true);
+  const savedUsername = localStorage.getItem('savedUsername');
+
   return (
-    <div className={styles.App}>
-      <div className={App__Title}>To do List</div>
-      <div className={App__MainComponents}>
-        <Categories
-          categories={categories}
-          setSelectedCategory={setSelectedCategory}
-          selectedCategory={selectedCategory}
-          setNewCategoryAdded={setNewCategoryAdded}
-        />
-        <Todos
-          category={
-            selectedCategory.name === 'default'
-              ? 'All tasks'
-              : selectedCategory.name
-          }
-          tasks={filterAndFormatTodos()}
-          categories={categories}
-          setNewTodoAdded={setNewTodoAdded}
-        />
+    <>
+      {' '}
+      {showModal && <Modal setShowModal={setShowModal} />}
+      <div className={styles.App}>
+        <div className={App__Title}>{savedUsername}'s <br/>To do List</div>
+        <div className={App__MainComponents}>
+          <Categories
+            categories={categories}
+            setSelectedCategory={setSelectedCategory}
+            selectedCategory={selectedCategory}
+            setNewCategoryAdded={setNewCategoryAdded}
+          />
+          <Todos
+            category={
+              selectedCategory.name === 'default'
+                ? 'All tasks'
+                : selectedCategory.name
+            }
+            tasks={filterAndFormatTodos()}
+            categories={categories}
+            setNewTodoAdded={setNewTodoAdded}
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
-
 export default App;
-

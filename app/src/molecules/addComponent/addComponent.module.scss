@@ -1,4 +1,4 @@
-@import '../../../styles/colors.scss';
+@import '../../../styles/colors.scss', '../../../styles/fonts.scss';
 
 .AddComponent {
   box-shadow: 0px 4px 4px 0px #00000040;
@@ -12,6 +12,7 @@
   border: 1px solid #eb5757;
 }
 .AddComponent__Header {
+  @include smallFont;
   margin-bottom: 1rem;
   display: flex;
   justify-content: space-between;

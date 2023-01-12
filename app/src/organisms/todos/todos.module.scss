@@ -1,4 +1,4 @@
-@import '../../../styles/colors.scss';
+@import '../../../styles/colors.scss', '../../../styles/fonts.scss';
 
 .Todos {
   height: 50vh;
@@ -19,12 +19,8 @@
   width: 100%;
 }
 .Todos__Title {
+  @include mediumFont;
   margin-right: 1rem;
-  font-family: 'SF Pro';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 50px;
-  line-height: 60px;
   color: #000000;
   text-transform: capitalize;
   margin-bottom: 1rem;
@@ -35,10 +31,8 @@
 
 .Todos__AddComponent {
   position: absolute;
-  // top: 0;
   right: 0;
   z-index: 10;
   margin: 0.5rem;
 }
-.Todos__TodosList {
-}
+
