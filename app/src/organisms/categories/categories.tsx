@@ -95,6 +95,7 @@ const Categories: React.FC<ICategories> = ({
             addValues={addCategory}
             dropdownType="color-palette"
             dropdownPlaceholder="Choose color"
+            closeAddComponent={() => setShowAddCategory(false)}
           />
         )}
       </div>

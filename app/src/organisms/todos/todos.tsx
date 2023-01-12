@@ -4,7 +4,7 @@ import { Button } from '../../atoms/button';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { Todo } from '../../molecules/todo';
 import { ICategory, ITodo } from '../../App';
-import AddComponent, { ITodoData } from '../addComponent/addComponent';
+import AddComponent from '../addComponent/addComponent';
 import useFetch from '../../hooks/useFetch';
 import useSetData from '../../hooks/useData';
 
@@ -35,13 +35,13 @@ const Todos: React.FC<ITodos> = ({
     );
     const currentTime = new Date();
     const createdAt = currentTime.toISOString();
-
     const formattedTodoData = {
       name: todoData.name,
       completed: todoData.completed,
       category: formatCategory?.categoryId,
       createdAt: createdAt,
     };
+
     const url = 'http://localhost:5000/todos';
     const body = { formattedTodoData };
     makeRequest(url, 'POST', body).then(() => {
@@ -74,6 +74,7 @@ const Todos: React.FC<ITodos> = ({
                   (category) => category.categoryName
                 )}
                 dropdownPlaceholder="Choose category"
+                closeAddComponent={() => setShowAddComponent(false)}
               />
             </div>
           )}

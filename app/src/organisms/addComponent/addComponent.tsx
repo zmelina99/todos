@@ -1,4 +1,5 @@
 import React from 'react';
+import { AiOutlineClose } from 'react-icons/ai';
 import { Button } from '../../atoms/button';
 import { DropdownSelect } from '../../molecules/dropdownSelect';
 import styles from './addComponent.module.scss';
@@ -11,6 +12,7 @@ interface IAddComponent {
   dropdownOptions: string[];
   dropdownType?: 'color-palette' | 'default';
   dropdownPlaceholder?: string;
+  closeAddComponent(): void;
 }
 export interface ITodoData {
   name: string;
@@ -26,10 +28,14 @@ const AddComponent: React.FC<IAddComponent> = ({
   dropdownType = 'default',
   addValues,
   dropdownPlaceholder,
+  closeAddComponent,
 }) => {
   const {
     AddComponent__Input,
     AddComponent__Header,
+    AddComponent__Header__Title,
+    AddComponent__Header__Icon,
+
     AddComponent__Categories,
     AddComponent__Name,
     AddComponent__Name__Label,
@@ -37,7 +43,12 @@ const AddComponent: React.FC<IAddComponent> = ({
 
   return (
     <div className={styles.AddComponent}>
-      <div className={AddComponent__Header}>{title}</div>
+      <div className={AddComponent__Header}>
+        <span className={AddComponent__Header__Title}>{title}</span>
+        <button className={AddComponent__Header__Icon} onClick={closeAddComponent}>
+          <AiOutlineClose size="20px"  />
+        </button>
+      </div>
 
       <div className={AddComponent__Name}>
         <span className={AddComponent__Name__Label}> {inputLabel}</span>

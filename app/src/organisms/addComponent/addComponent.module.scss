@@ -11,6 +11,17 @@
 }
 .AddComponent__Header {
   margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.AddComponent__Header__Icon {
+  border: none;
+  background-color: transparent;
+  padding: none;
+  &:hover {
+    cursor: pointer;
+  }
 }
 .AddComponent__Categories {
   margin: 1rem 0;
