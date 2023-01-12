@@ -41,7 +41,6 @@ const AddComponent: React.FC<IAddComponent> = ({
     AddComponent__Name,
     AddComponent__Name__Label,
   } = styles;
-console.log(isDisabled())
   return (
     <div className={styles.AddComponent}>
       <div className={AddComponent__Header}>

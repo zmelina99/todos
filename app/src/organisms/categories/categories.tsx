@@ -65,7 +65,6 @@ const Categories: React.FC<ICategories> = ({
         All tasks
       </div>
       {categories.map((category) => {
-        console.log(category.categoryId, 'me', selectedCategory.id);
         return (
           <div
             className={`${Categories__Category} ${

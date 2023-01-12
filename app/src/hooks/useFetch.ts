@@ -5,10 +5,8 @@ const useFetch = () => {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-
   const makeRequest = useCallback(
     async (url: string, requestType: string, payload?: any) => {
-      console.log(payload)
       setIsLoading(true);
       setError(null);
       try {

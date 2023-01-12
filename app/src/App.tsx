@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import { Categories } from './organisms/categories';
 import styles from './app.module.scss';
@@ -50,6 +50,7 @@ function App() {
   });
 
   const fetchTodos = async () => {
+    
     const result = await axios.get('http://localhost:5000/todos');
     const formatResult: ITodo[] = result.data.map((todo: ITodoResponse) => ({
       todoId: todo.todo_id,
@@ -79,7 +80,7 @@ function App() {
   const [newTodoAdded, setNewTodoAdded] = useState(true);
   const [newCategoryAdded, setNewCategoryAdded] = useState(true);
 
-  const filterAndFormatTodos = () => {
+  const filterAndFormatTodos = useCallback(() => {
     const filteredTodos =
       selectedCategory.id !== 0
         ? todos.filter((todo) => todo.categoryId === selectedCategory.id)
@@ -90,16 +91,19 @@ function App() {
         new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
     );
     return sortTodos;
-  };
+  }, [selectedCategory, todos]);
 
   useEffect(() => {
-    if (newTodoAdded) fetchTodos();
+    if (newTodoAdded) {
+      fetchTodos()
+    };
   }, [newTodoAdded]);
 
   useEffect(() => {
     if (newCategoryAdded) fetchCategories();
   }, [newCategoryAdded]);
 
+  console.log(todos, filterAndFormatTodos())
   return (
     <div className={styles.App}>
       <div className={App__Title}>To do List</div>

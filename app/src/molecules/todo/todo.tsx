@@ -63,7 +63,7 @@ const Todo: React.FC<ITodo> = ({
       name: 'delete',
     },
   ];
-
+  console.log(task, 'task', editedValue);
   const { Todo__Checked, Todo__Task, Todo__Task__Checked } = styles;
   return (
     <div className={`${styles.Todo} ${completed && Todo__Checked}`}>

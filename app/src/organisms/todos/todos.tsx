@@ -86,9 +86,9 @@ const Todos: React.FC<ITodos> = ({
           )}
         </div>
       </div>
-      {tasks.map((task, index) => (
+      {tasks.map((task) => (
         <Todo
-          key={index}
+          key={task.todoId}
           task={task.todoName}
           isCompleted={task.completed}
           id={task.todoId}
