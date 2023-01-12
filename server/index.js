@@ -32,12 +32,13 @@ app.post('/categories', categories.addCategory);
 app.put('/todos/:id', async (req, res) => {
   //await waits for the function to complete before it continues
   try {
-    const { description, completed } = req.body;
+    console.log(req.body)
+    const { name, completed } = req.body;
     const { id } = req.params;
-    if (description) {
+    if (name) {
       const updateTodo = await pool.query(
-        `UPDATE todo SET description = $1 WHERE todo_id = $2`,
-        [description, id]
+        `UPDATE todo SET todo_name = $1 WHERE todo_id = $2`,
+        [name, id]
       );
       res.json(updateTodo.rows[0]);
     } else {

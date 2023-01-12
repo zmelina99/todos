@@ -8,6 +8,7 @@
   justify-content: center;
   align-items: center;
   margin: 0;
+  border: 1px solid #eb5757;
 
   &--primary {
     background-image: $base-gradient;
@@ -17,6 +18,7 @@
   &--secondary {
     color: $base-gray;
     background-color: transparent;
+    border: none;
 
     &:hover {
       text-decoration: underline;
@@ -28,6 +30,7 @@
   }
   &:disabled {
     cursor: unset;
+    border: none;
   }
 }
 .Button__Icon,

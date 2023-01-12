@@ -94,6 +94,7 @@ const Todos: React.FC<ITodos> = ({
           id={task.todoId}
           category={task.categoryName}
           color={task.color}
+          setNewTodoAdded={setNewTodoAdded}
         />
       ))}
     </div>

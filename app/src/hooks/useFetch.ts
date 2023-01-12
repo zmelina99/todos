@@ -6,24 +6,27 @@ const useFetch = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const makeRequest = useCallback(async (url: string, requestType: string, payload: any) => {
-    setIsLoading(true);
-    setError(null);
+  const makeRequest = useCallback(
+    async (url: string, requestType: string, payload?: any) => {
+      console.log(payload)
+      setIsLoading(true);
+      setError(null);
+      try {
+        const res = await axios({
+          method: requestType,
+          url,
+          data: payload,
+        });
 
-    try {
-      const res = await axios({
-        method: requestType,
-        url,
-        data: payload,
-      });
-
-      setResponse(res.data);
-    } catch (err: any) {
-      setError(err.response.data.message);
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
+        setResponse(res.data);
+      } catch (err: any) {
+        setError(err.response.data.message);
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    []
+  );
 
   return { makeRequest, response, error, isLoading };
 };
