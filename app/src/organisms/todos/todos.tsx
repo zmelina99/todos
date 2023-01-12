@@ -70,6 +70,7 @@ const Todos: React.FC<ITodos> = ({ category, tasks, categories }) => {
                 setData={setData}
                 addValues={addTodo}
                 dropdownOptions={categories.map((category) => category.categoryName)}
+                dropdownPlaceholder='Choose category'
               />
             </div>
           )}
@@ -82,6 +83,7 @@ const Todos: React.FC<ITodos> = ({ category, tasks, categories }) => {
           isCompleted={task.completed}
           id={task.todoId}
           category={task.categoryName}
+          color={task.color}
         />
       ))}
     </div>

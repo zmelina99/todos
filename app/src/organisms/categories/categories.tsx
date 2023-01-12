@@ -35,14 +35,8 @@ const Categories: React.FC<ICategories> = ({
 
   const addCategory = async () => {
     try {
-     
-      const formattedTodoData = {
-        name: categoryData.name,
-        color: categoryData.color,
-      };
-      console.log(formattedTodoData);
-      const result = await axios.post(`http://localhost:5000/todos`, {
-        formattedTodoData,
+      const result = await axios.post(`http://localhost:5000/categories`, {
+        categoryData,
       });
       return result.data;
     } catch (error) {
@@ -108,8 +102,8 @@ const Categories: React.FC<ICategories> = ({
             inputValue={categoryData.name}
             setData={setData}
             addValues={addCategory}
-            dropdownType='color-palette'
-            dropdownPlaceholder='Choose color'
+            dropdownType="color-palette"
+            dropdownPlaceholder="Choose color"
           />
         )}
       </div>

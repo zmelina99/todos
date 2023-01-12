@@ -23,6 +23,7 @@ export interface ITodo {
   categoryId: number;
   categoryName: string;
   todoId: number;
+  color: string;
 }
 export interface ITodoResponse {
   todo_id: number;
@@ -30,12 +31,16 @@ export interface ITodoResponse {
   completed: boolean;
   category_id: number;
   category_name: string;
+  color?: string;
 }
 
 export interface ISelectedCategory {
   name: string;
   id: number;
 }
+
+//add newtodoadded boolean to make app more efficient and avoid continous rendering
+
 function App() {
   const [todos, setTodos] = useState<ITodo[]>([]);
   const [categories, setCategories] = useState<ICategory[]>([]);
@@ -48,12 +53,12 @@ function App() {
     const result = await axios.get('http://localhost:5000/todos');
     const formatResult: ITodo[] = result.data.map((todo: ITodoResponse) => ({
       todoId: todo.todo_id,
-      todoName: todo?.todo_name,
-      completed: todo?.completed,
-      categoryId: todo?.category_id,
-      categoryName: todo?.category_name,
+      todoName: todo.todo_name,
+      completed: todo.completed,
+      categoryId: todo.category_id,
+      categoryName: todo.category_name,
+      color: todo.color ? todo.color : 'transparent',
     }));
-    console.log(formatResult, 'f');
     setTodos(formatResult);
   };
 
@@ -71,18 +76,14 @@ function App() {
 
   useEffect(() => {
     fetchTodos();
+  }, []);
+  useEffect(() => {
     fetchCategories();
   }, []);
 
   const { App__Title, App__MainComponents } = styles;
   return (
     <div className={styles.App}>
-      <DropdownSelect
-        dropdownOptions={['a', 'b']}
-        onCallback={() => console.log('hello')}
-        style={{ width: 'fit-content' }}
-        optionsStyle={{ width: 'fit-content' }}
-      />
       <div className={App__Title}>To do List</div>
       <div className={App__MainComponents}>
         <Categories
