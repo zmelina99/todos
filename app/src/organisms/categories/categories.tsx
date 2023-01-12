@@ -11,6 +11,7 @@ interface ICategories {
   categories: ICategory[];
   selectedCategory: ISelectedCategory;
   setSelectedCategory: any;
+  setNewCategoryAdded: any;
 }
 
 const colors = [
@@ -26,6 +27,7 @@ const Categories: React.FC<ICategories> = ({
   categories,
   selectedCategory,
   setSelectedCategory,
+  setNewCategoryAdded,
 }) => {
   const [showAddCategory, setShowAddCategory] = useState(false);
 
@@ -37,8 +39,10 @@ const Categories: React.FC<ICategories> = ({
 
   const addCategory = async () => {
     const url = 'http://localhost:5000/categories';
-    const body = { categoryData};
-    makeRequest(url, 'POST', body);
+    const body = { categoryData };
+    makeRequest(url, 'POST', body).then(() => {
+      setNewCategoryAdded(true);
+    });
   };
 
   const setData = (data: any | string) => {

@@ -4,7 +4,6 @@ import { Button } from '../../atoms/button';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { Todo } from '../../molecules/todo';
 import { ICategory, ITodo } from '../../App';
-import axios from 'axios';
 import AddComponent, { ITodoData } from '../addComponent/addComponent';
 import useFetch from '../../hooks/useFetch';
 
@@ -12,9 +11,15 @@ interface ITodos {
   category: string;
   tasks: ITodo[];
   categories: ICategory[];
+  setNewTodoAdded: any;
 }
 
-const Todos: React.FC<ITodos> = ({ category, tasks, categories }) => {
+const Todos: React.FC<ITodos> = ({
+  category,
+  tasks,
+  categories,
+  setNewTodoAdded,
+}) => {
   const [showAddComponent, setShowAddComponent] = useState(false);
 
   const [todoData, setTodoData] = useState<ITodoData>({
@@ -35,7 +40,9 @@ const Todos: React.FC<ITodos> = ({ category, tasks, categories }) => {
     };
     const url = 'http://localhost:5000/todos';
     const body = { formattedTodoData };
-    makeRequest(url, 'POST', body);
+    makeRequest(url, 'POST', body).then(() => {
+      setNewTodoAdded(true);
+    });
   };
 
   const setData = (data: any | string) => {

@@ -45,6 +45,8 @@ function App() {
     name: 'default',
     id: 0,
   });
+  const [newTodoAdded, setNewTodoAdded] = useState(true);
+  const [newCategoryAdded, setNewCategoryAdded] = useState(true);
 
   const fetchTodos = async () => {
     const result = await axios.get('http://localhost:5000/todos');
@@ -57,6 +59,7 @@ function App() {
       color: todo.color ? todo.color : 'transparent',
     }));
     setTodos(formatResult);
+    setNewTodoAdded(false);
   };
 
   const fetchCategories = async () => {
@@ -69,17 +72,18 @@ function App() {
       })
     );
     setCategories(formatResult);
+    setNewCategoryAdded(false);
   };
 
   useEffect(() => {
-    fetchTodos();
-  }, []);
+    if (newTodoAdded) fetchTodos();
+  }, [newTodoAdded]);
+  
   useEffect(() => {
-    fetchCategories();
-  }, []);
-  //FIXME add newtodoadded boolean to make app more efficient and avoid continous rendering
-  //FIXME add custom hook to fetch
-  //FIXMEhttps://javascript.plainenglish.io/custom-hook-in-react-js-for-calling-api-useapi-7de24b42729c#:~:text=What%20is%20a%20custom%20hook%3F,be%20shared%20among%20different%20components.
+    if (newCategoryAdded) fetchCategories();
+  }, [newCategoryAdded]);
+
+
   const { App__Title, App__MainComponents } = styles;
   return (
     <div className={styles.App}>
@@ -89,6 +93,7 @@ function App() {
           categories={categories}
           setSelectedCategory={setSelectedCategory}
           selectedCategory={selectedCategory}
+          setNewCategoryAdded={setNewCategoryAdded}
         />
         <Todos
           category={
@@ -102,6 +107,7 @@ function App() {
               : todos
           }
           categories={categories}
+          setNewTodoAdded={setNewTodoAdded}
         />
       </div>
     </div>
