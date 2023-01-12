@@ -26,6 +26,14 @@ const Todo: React.FC<ITodo> = ({
   setNewTodoAdded,
   categoryId,
 }) => {
+  const {
+    Todo__Checked,
+    Todo__Task,
+    Todo__Task__Checked,
+    Todo__Actions,
+    Todo__ActionButton,
+  } = styles;
+
   const [completed, setCompleted] = useState(isCompleted);
   const [editedValue, setEditedValue] = useState(task);
   const [edit, setEdit] = useState(true);
@@ -33,7 +41,7 @@ const Todo: React.FC<ITodo> = ({
 
   const changeTaskState = async () => {
     setCompleted(!completed);
-    
+
     const url = `${process.env.REACT_APP_URL}/todos/${id}`;
     const body = { completed: !completed };
     makeRequest(url, 'PUT', body);
@@ -68,13 +76,7 @@ const Todo: React.FC<ITodo> = ({
       name: 'delete',
     },
   ];
-  const {
-    Todo__Checked,
-    Todo__Task,
-    Todo__Task__Checked,
-    Todo__Actions,
-    Todo__ActionButton,
-  } = styles;
+
   return (
     <div className={`${styles.Todo} ${completed && Todo__Checked}`}>
       <Checkbox checked={completed} onChecked={changeTaskState} />

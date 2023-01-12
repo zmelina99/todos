@@ -21,6 +21,14 @@ const Todos: React.FC<ITodos> = ({
   categories,
   setNewTodoAdded,
 }) => {
+  const {
+    Todos__Title,
+    Todos__Header,
+    Todos__Button,
+    Todos__AddComponent,
+    Todos__TodosList,
+  } = styles;
+  
   const [showAddComponent, setShowAddComponent] = useState(false);
   const [todoData, setData] = useSetData(
     { name: '', category: 'default', completed: false },
@@ -56,8 +64,7 @@ const Todos: React.FC<ITodos> = ({
     if (todoData.name.length >= 5) return false;
     else return true;
   };
-  const { Todos__Title, Todos__Header, Todos__Button, Todos__AddComponent, Todos__TodosList } =
-    styles;
+
   return (
     <div className={styles.Todos}>
       <div className={Todos__Header}>

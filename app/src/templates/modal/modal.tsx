@@ -46,7 +46,7 @@ const Modal: React.FC<IModal> = ({ setShowModal }) => {
           />
         </div>
         <div className={Modal__NameBox__Footer}>
-          <img src={todos} width="100px" />
+          <img src={todos} width="100px" alt='todo-list'/>
           <div className={Modal__NameBox__Footer__Button}>
             {' '}
             <Button

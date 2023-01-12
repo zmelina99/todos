@@ -19,10 +19,6 @@ const DropdownSelectComponent: React.FC<IDropdown> = ({
   optionsStyle,
   type = 'default',
 }) => {
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(
-    placeholder || (dropdownOptions ? dropdownOptions[0] : '')
-  );
 
   const {
     Dropdown,
@@ -30,6 +26,11 @@ const DropdownSelectComponent: React.FC<IDropdown> = ({
     Dropdown__Options,
     Dropdown__Options__Option,
   } = styles;
+
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(
+    placeholder || (dropdownOptions ? dropdownOptions[0] : '')
+  );
 
   const menuRef = useRef<HTMLHeadingElement>(null);
 
@@ -56,7 +57,7 @@ const DropdownSelectComponent: React.FC<IDropdown> = ({
     return () => {
       document.removeEventListener('click', handleOutsideClick, true);
     };
-  }, []); //FIXME add this logic to AddComponent
+  }, []); 
 
   return (
     <div className={Dropdown}>
