@@ -18,8 +18,8 @@ INSERT INTO categories
 VALUES (2, 'sports', 'blue');
 
 
-INSERT INTO todo 
-VALUES ( 'dance', true);
+INSERT INTO categories 
+VALUES ( 1, 'blue', 'groceries');
 
 
 ALTER TABLE categories
@@ -34,12 +34,12 @@ ADD COLUMN name VARCHAR(250)
 ALTER TABLE todo
 ADD COLUMN completed BOOLEAN;
 
-ALTER TABLE todo  
+ALTER TABLE categories  
 DROP COLUMN name;
 
 
- ALTER TABLE todo 
- ADD COLUMN category_id integer;
+ ALTER TABLE categories 
+ ADD COLUMN category_name VARCHAR(100);
 
 ALTER TABLE todo ADD CONSTRAINT distfk FOREIGN KEY (category_id) REFERENCES categories (category_id);
 

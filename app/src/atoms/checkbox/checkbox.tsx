@@ -4,7 +4,7 @@ import { AiOutlineCheck } from 'react-icons/ai';
 type ICheckbox = {
   checked: boolean;
   onChecked(): void;
-  id: any;
+  id: number;
 } 
 
 const Checkbox: React.FC<ICheckbox> = ({ checked, onChecked, id }) => {

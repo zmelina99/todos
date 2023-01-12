@@ -25,8 +25,10 @@ async function addTodos(req, res) {
 
 async function getTodos(req, res) {
   try {
-    const allTodos = await pool.query('SELECT * FROM todo LEFT JOIN categories ON todo.category_id = categories.category_id'); 
-    
+    const allTodos = await pool.query(
+      'SELECT * FROM todo LEFT JOIN categories ON todo.category_id = categories.category_id'
+    );
+
     res.json(allTodos.rows);
   } catch {
     console.error(err.message);

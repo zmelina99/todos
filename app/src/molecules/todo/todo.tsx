@@ -8,7 +8,7 @@ interface ITodo {
   task: string;
   isCompleted: boolean;
   id: number;
-  category?: string;
+  category: string;
 }
 
 const Todo: React.FC<ITodo> = ({ task, id, isCompleted, category }) => {
@@ -34,7 +34,7 @@ const Todo: React.FC<ITodo> = ({ task, id, isCompleted, category }) => {
       <span className={`${Todo__Task} ${completed && Todo__Task__Checked}`}>
         {task}
       </span>
-      <Category name={category} color={'blue'} category_id={0} />
+      <Category categoryName={category} color={'blue'} category_id={0} />
     </div>
   );
 };

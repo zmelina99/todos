@@ -40,7 +40,24 @@ async function getCategory(req, res) {
     console.error(err.message);
   }
 }
+
+async function addCategory(req, res) {
+  try {
+    const { name, color } = req.body.todoData;
+    //await waits for the function to complete before it continues
+    const newTodo = await pool.query(
+      'INSERT INTO category(name, color) VALUES($1, $2) RETURNING *',
+      [name, color]
+    );
+    res.json(newTodo.rows[0]);
+    //$1 is a placeholder and desciption is going to be the value
+    console.log(req.body);
+  } catch (err) {
+    console.error(err.message);
+  }
+}
 module.exports = {
   getCategories,
   getCategory,
+  addCategory,
 };

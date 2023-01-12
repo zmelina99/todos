@@ -24,7 +24,9 @@ const Categories: React.FC<ICategories> = ({
   return (
     <div className={styles.Categories}>
       <div
-        className={`${ isSelected === 0 && Categories__Default} ${Categories__Category}`}
+        className={`${
+          isSelected === 0 && Categories__Default
+        } ${Categories__Category}`}
         onClick={() => setSelectedCategory(0)}
       >
         All Tasks
@@ -37,7 +39,7 @@ const Categories: React.FC<ICategories> = ({
           key={category.category_id}
           onClick={() => setSelectedCategory(category.category_id)}
         >
-          {category.name}
+          {category.categoryName}
         </div>
       ))}
       <div className={Categories__Button}>

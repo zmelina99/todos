@@ -1,35 +1,63 @@
 import React, { useEffect, useState } from 'react';
-import Checkbox from './atoms/checkbox/checkbox';
-import { Category } from './atoms/category';
-import { Button } from './atoms/button';
-import { DropdownSelect } from './molecules/dropdownSelect';
-import { AiOutlinePlus } from 'react-icons/ai';
-import { Todo } from './molecules/todo';
 import axios from 'axios';
 import { Categories } from './organisms/categories';
 import styles from './app.module.scss';
 import { Todos } from './organisms/todos';
 
 export interface ICategory {
-  name?: string;
+  categoryName: string;
   color: string;
   category_id: number;
 }
 
+export interface ICategoryResponse {
+  category_name: string;
+  category_id: number;
+  color: string;
+}
 
+export interface ITodo {
+  todoName: string;
+  completed: boolean;
+  categoryId: number;
+  categoryName: string;
+  todoId: number;
+}
+export interface ITodoResponse {
+  todo_id: number;
+  todo_name: string;
+  completed: boolean;
+  category_id: number;
+  category_name: string;
+}
 function App() {
-  const [todos, setTodos] = useState<any[]>([]);
-  const [categories, setCategories] = useState<any[]>([]);
+  const [todos, setTodos] = useState<ITodo[]>([]);
+  const [categories, setCategories] = useState<ICategory[]>([]);
   const [selectedCategory, setSelectedCategory] = useState(0);
 
   const fetchTodos = async () => {
     const result = await axios.get('http://localhost:5000/todos');
-    setTodos(result.data);
+    const formatResult: ITodo[] = result.data.map((todo: ITodoResponse) => ({
+      todoId: todo.todo_id,
+      todoName: todo?.todo_name,
+      completed: todo?.completed,
+      categoryId: todo?.category_id,
+      categoryName: todo?.category_name,
+    }));
+    console.log(formatResult, 'f');
+    setTodos(formatResult);
   };
 
   const fetchCategories = async () => {
     const result = await axios.get('http://localhost:5000/categories');
-    setCategories(result.data);
+    const formatResult: ICategory[] = result.data.map(
+      (category: ICategoryResponse) => ({
+        categoryName: category?.category_name,
+        categoryId: category?.category_id,
+        color: category?.color,
+      })
+    );
+    setCategories(formatResult);
   };
 
   useEffect(() => {
@@ -52,7 +80,7 @@ function App() {
           category={'all tasks'}
           tasks={
             selectedCategory !== 0
-              ? todos.filter((todo) => todo.category_id === selectedCategory)
+              ? todos.filter((todo) => todo.categoryId === selectedCategory)
               : todos
           }
           categories={categories}

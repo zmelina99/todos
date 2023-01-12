@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { ICategory } from '../../App';
 import { Button } from '../../atoms/button';
 import { DropdownSelect } from '../../molecules/dropdownSelect';
 import styles from './addTodo.module.scss';
 interface IAddTodo {
-  categories: any[];
+  categories: ICategory[];
 }
 export interface ITodoData {
   name: string;
@@ -12,13 +13,11 @@ export interface ITodoData {
   completed: boolean;
 }
 const AddTodo: React.FC<IAddTodo> = ({ categories }) => {
-  const [todoName, setTodoName] = useState('');
   const [todoData, setTodoData] = useState<ITodoData>({
     name: '',
     completed: false,
     category: 1,
   });
-  const [category, setCategory] = useState('');
   const addTodo = async () => {
     try {
       const result = await axios.post(`http://localhost:5000/todos`, {
@@ -30,9 +29,6 @@ const AddTodo: React.FC<IAddTodo> = ({ categories }) => {
     }
   };
 
-  const formatCategory = () => {
-
-  }
   const {
     AddTodo__Input,
     AddTodo__Header,
@@ -40,7 +36,6 @@ const AddTodo: React.FC<IAddTodo> = ({ categories }) => {
     AddTodo__Name,
     AddTodo__Name__Label,
   } = styles;
-  console.log(category);
   return (
     <div className={styles.AddTodo}>
       <div className={AddTodo__Header}>Add New ToDo!</div>
@@ -58,8 +53,8 @@ const AddTodo: React.FC<IAddTodo> = ({ categories }) => {
 
       <div className={AddTodo__Categories}>
         <DropdownSelect
-          dropdownOptions={categories.map((category) => category.name)}
-          onCallback={(option) => setTodoData({...todoData, category: 2})}
+          dropdownOptions={categories.map((category) => category.categoryName)}
+          onCallback={(option) => setTodoData({ ...todoData, category: 2 })}
         />
       </div>
       <Button label="Add" onClick={addTodo} />
