@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { ICategory } from '../../App';
+import React from 'react';
 import { Button } from '../../atoms/button';
 import { DropdownSelect } from '../../molecules/dropdownSelect';
 import styles from './addComponent.module.scss';
 interface IAddComponent {
-  categories: ICategory[];
   title: string;
   inputLabel: string;
   inputValue: string;
   setData: any;
   addValues(): void;
+  dropdownOptions: string[];
+  dropdownType?: 'color-palette' | 'default';
+  dropdownPlaceholder?: string;
 }
 export interface ITodoData {
   name: string;
@@ -18,12 +18,14 @@ export interface ITodoData {
   completed: boolean;
 }
 const AddComponent: React.FC<IAddComponent> = ({
-  categories,
   title,
   inputLabel,
   inputValue,
   setData,
+  dropdownOptions,
+  dropdownType = 'default',
   addValues,
+  dropdownPlaceholder,
 }) => {
   const {
     AddComponent__Input,
@@ -48,9 +50,10 @@ const AddComponent: React.FC<IAddComponent> = ({
 
       <div className={AddComponent__Categories}>
         <DropdownSelect
-          dropdownOptions={categories.map((category) => category.categoryName)}
+          dropdownOptions={dropdownOptions}
           onCallback={(option) => setData(option)}
-          placeholder="Select category"
+          placeholder={dropdownPlaceholder}
+          type={dropdownType}
         />
       </div>
       <Button label="Add" onClick={addValues} />

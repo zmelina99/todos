@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './categories.module.scss';
 import { ICategory, ISelectedCategory } from '../../App';
 import { Button } from '../../atoms/button';
 import { AiOutlinePlus } from 'react-icons/ai';
+import { AddComponent } from '../addComponent';
+import axios from 'axios';
 
 interface ICategories {
   categories: ICategory[];
@@ -10,18 +12,57 @@ interface ICategories {
   setSelectedCategory: any;
 }
 
+const colors = [
+  '#eb5757',
+  '#ababab',
+  '#2f80ed',
+  '#f2994a',
+  '#27ae60',
+  '#9b51e0',
+];
+
 const Categories: React.FC<ICategories> = ({
   categories,
   selectedCategory,
   setSelectedCategory,
 }) => {
+  const [showAddCategory, setShowAddCategory] = useState(false);
+
+  const [categoryData, setCategoryData] = useState({
+    name: '',
+    color: 'pink',
+  });
+
+  const addCategory = async () => {
+    try {
+     
+      const formattedTodoData = {
+        name: categoryData.name,
+        color: categoryData.color,
+      };
+      console.log(formattedTodoData);
+      const result = await axios.post(`http://localhost:5000/todos`, {
+        formattedTodoData,
+      });
+      return result.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const setData = (data: any | string) => {
+    if (typeof data === 'string') {
+      setCategoryData({ ...categoryData, color: data });
+    } else setCategoryData({ ...categoryData, name: data?.target.value });
+  };
+
   const {
     Categories__Category,
     Categories__Default,
     Categories__Category__Selected,
     Categories__Button,
   } = styles;
-  console.log(selectedCategory)
+  console.log(selectedCategory);
   return (
     <div className={styles.Categories}>
       <div
@@ -30,7 +71,7 @@ const Categories: React.FC<ICategories> = ({
         } ${Categories__Category}`}
         onClick={() => setSelectedCategory({ name: 'default', id: 0 })}
       >
-       All tasks
+        All tasks
       </div>
       {categories.map((category) => {
         console.log(category.categoryId, 'me', selectedCategory.id);
@@ -57,7 +98,20 @@ const Categories: React.FC<ICategories> = ({
           variant="secondary"
           label="Add category"
           icon={<AiOutlinePlus />}
+          onClick={() => setShowAddCategory(!showAddCategory)}
         />
+        {showAddCategory && (
+          <AddComponent
+            dropdownOptions={colors}
+            title="Add a new category"
+            inputLabel="Category Name"
+            inputValue={categoryData.name}
+            setData={setData}
+            addValues={addCategory}
+            dropdownType='color-palette'
+            dropdownPlaceholder='Choose color'
+          />
+        )}
       </div>
     </div>
   );

@@ -21,6 +21,8 @@ const Todos: React.FC<ITodos> = ({ category, tasks, categories }) => {
     completed: false,
     category: 'default',
   });
+
+  
   const addTodo = async () => {
     try {
       const formatCategory = categories.find(
@@ -46,7 +48,7 @@ const Todos: React.FC<ITodos> = ({ category, tasks, categories }) => {
       setTodoData({ ...todoData, category: data });
     } else setTodoData({ ...todoData, name: data?.target.value });
   };
-  
+
   const { Todos__Title, Todos__Header, Todos__Button, Todos__AddComponent } = styles;
   return (
     <div className={styles.Todos}>
@@ -62,12 +64,12 @@ const Todos: React.FC<ITodos> = ({ category, tasks, categories }) => {
           {showAddComponent && (
             <div className={Todos__AddComponent}>
               <AddComponent
-                categories={categories}
                 title={'Add New Todo!'}
                 inputLabel={'Todo Name'}
                 inputValue={todoData.name}
                 setData={setData}
                 addValues={addTodo}
+                dropdownOptions={categories.map((category) => category.categoryName)}
               />
             </div>
           )}

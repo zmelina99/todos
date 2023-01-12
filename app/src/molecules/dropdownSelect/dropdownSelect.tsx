@@ -8,6 +8,7 @@ export interface IDropdown {
   style?: React.CSSProperties;
   onCallback(option: string): void;
   optionsStyle?: React.CSSProperties;
+  type?: 'default' | 'color-palette';
 }
 
 const DropdownSelectComponent: React.FC<IDropdown> = ({
@@ -16,6 +17,7 @@ const DropdownSelectComponent: React.FC<IDropdown> = ({
   style,
   onCallback,
   optionsStyle,
+  type = 'default',
 }) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedOption, setSelectedOption] = useState(
@@ -64,7 +66,9 @@ const DropdownSelectComponent: React.FC<IDropdown> = ({
         tabIndex={0}
         role="button"
         className={`${Dropdown__Input} ${Dropdown}`}
-        style={style}
+        style={
+          type === 'color-palette' ? { backgroundColor: selectedOption } : style
+        }
       >
         {selectedOption}
         <ChevronDown />
@@ -76,8 +80,13 @@ const DropdownSelectComponent: React.FC<IDropdown> = ({
               key={option}
               className={Dropdown__Options__Option}
               onClick={() => handleClick(option)}
+              style={
+                type === 'color-palette'
+                  ? { backgroundColor: option }
+                  : undefined
+              }
             >
-              {option}
+              {type !== 'color-palette' ? option : undefined}
             </div>
           ))}
         </div>
