@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './categories.module.scss';
 import { ICategory, ISelectedCategory } from '../../App';
 import { Button } from '../../atoms/button';
@@ -41,8 +41,11 @@ const Categories: React.FC<ICategories> = ({
       makeRequest(url, 'POST', body).then(() => {
         setNewCategoryAdded(true);
       });
+      setShowAddCategory(false);
+      setData('submited');
     }
   };
+
   const isDisabled = (): boolean => {
     if (categoryData.name.length >= 5) return false;
     else return true;
@@ -53,6 +56,7 @@ const Categories: React.FC<ICategories> = ({
     Categories__Category__Selected,
     Categories__Button,
   } = styles;
+  console.log(categoryData, 'data')
   return (
     <div className={styles.Categories}>
       <div

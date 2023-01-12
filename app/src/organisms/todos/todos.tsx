@@ -48,6 +48,8 @@ const Todos: React.FC<ITodos> = ({
       makeRequest(url, 'POST', body).then(() => {
         setNewTodoAdded(true);
       });
+      setShowAddComponent(false)
+      setData('submited')
     }
   };
   const isDisabled = (): boolean => {
