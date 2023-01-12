@@ -40,7 +40,6 @@ export interface ISelectedCategory {
 }
 
 function App() {
-
   const { App__Title, App__MainComponents } = styles;
   const [todos, setTodos] = useState<ITodo[]>([]);
   const [categories, setCategories] = useState<ICategory[]>([]);
@@ -50,8 +49,7 @@ function App() {
   });
 
   const fetchTodos = async () => {
-    
-    const result = await axios.get('http://localhost:5000/todos');
+    const result = await axios.get(`${process.env.REACT_APP_URL}/todos`);
     const formatResult: ITodo[] = result.data.map((todo: ITodoResponse) => ({
       todoId: todo.todo_id,
       todoName: todo.todo_name,
@@ -95,15 +93,15 @@ function App() {
 
   useEffect(() => {
     if (newTodoAdded) {
-      fetchTodos()
-    };
+      fetchTodos();
+    }
   }, [newTodoAdded]);
 
   useEffect(() => {
     if (newCategoryAdded) fetchCategories();
   }, [newCategoryAdded]);
 
-  console.log(todos, filterAndFormatTodos())
+  console.log(todos, filterAndFormatTodos());
   return (
     <div className={styles.App}>
       <div className={App__Title}>To do List</div>

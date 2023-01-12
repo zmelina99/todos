@@ -4,7 +4,6 @@ import { ICategory, ISelectedCategory } from '../../App';
 import { Button } from '../../atoms/button';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { AddComponent } from '../../molecules/addComponent';
-import axios from 'axios';
 import useFetch from '../../hooks/useFetch';
 import useSetData from '../../hooks/useData';
 
