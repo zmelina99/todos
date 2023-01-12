@@ -14,6 +14,7 @@ interface ITodo {
   category: string;
   color?: string;
   setNewTodoAdded: any;
+  categoryId: number;
 }
 
 const Todo: React.FC<ITodo> = ({
@@ -23,6 +24,7 @@ const Todo: React.FC<ITodo> = ({
   category,
   color,
   setNewTodoAdded,
+  categoryId,
 }) => {
   const [completed, setCompleted] = useState(isCompleted);
   const [editedValue, setEditedValue] = useState(task);
@@ -46,10 +48,12 @@ const Todo: React.FC<ITodo> = ({
   };
 
   const handleSave = () => {
-    const url = `http://localhost:5000/todos/${id}`;
-    const body = { name: editedValue };
-    makeRequest(url, 'PUT', body);
-    setEdit(!edit);
+    if (editedValue.length >= 5) {
+      const url = `http://localhost:5000/todos/${id}`;
+      const body = { name: editedValue };
+      makeRequest(url, 'PUT', body);
+      setEdit(!edit);
+    }
   };
   const actions = [
     {
@@ -83,7 +87,7 @@ const Todo: React.FC<ITodo> = ({
       <Category
         categoryName={category}
         color={color ? color : 'transparent'}
-        categoryId={0} //FIXME
+        categoryId={categoryId}
       />
       <div className={Todo__Actions}>
         {actions.map((action, index) => (

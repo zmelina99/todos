@@ -29,6 +29,13 @@ const Categories: React.FC<ICategories> = ({
   setSelectedCategory,
   setNewCategoryAdded,
 }) => {
+  const {
+    Categories__Category,
+    Categories__Default,
+    Categories__Category__Selected,
+    Categories__Button,
+  } = styles;
+
   const [showAddCategory, setShowAddCategory] = useState(false);
   //custom hook to update data for add component
   const [categoryData, setData] = useSetData({ name: '', color: '' }, 'color');
@@ -50,20 +57,14 @@ const Categories: React.FC<ICategories> = ({
     if (categoryData.name.length >= 5) return false;
     else return true;
   };
-  const {
-    Categories__Category,
-    Categories__Default,
-    Categories__Category__Selected,
-    Categories__Button,
-  } = styles;
-  console.log(categoryData, 'data')
+
   return (
     <div className={styles.Categories}>
       <div
         className={`${
           selectedCategory.id === 0 && Categories__Default
         } ${Categories__Category}`}
-        onClick={() => setSelectedCategory({ name: 'default', id: 0 })}
+        onClick={() => setSelectedCategory({ name: 'general', id: 0 })}
       >
         All tasks
       </div>
@@ -82,7 +83,7 @@ const Categories: React.FC<ICategories> = ({
               })
             }
           >
-            {category.categoryName}
+            {category.categoryName !== 'General' && category.categoryName}
           </div>
         );
       })}
@@ -96,7 +97,7 @@ const Categories: React.FC<ICategories> = ({
         {showAddCategory && (
           <AddComponent
             dropdownOptions={colors}
-            title="Add a new category"
+            title="Add category"
             inputLabel="Category Name"
             inputValue={categoryData.name}
             setData={setData}

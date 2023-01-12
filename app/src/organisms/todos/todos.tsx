@@ -23,7 +23,7 @@ const Todos: React.FC<ITodos> = ({
 }) => {
   const [showAddComponent, setShowAddComponent] = useState(false);
   const [todoData, setData] = useSetData(
-    { name: '', category: 'default', completed: false },
+    { name: '', category: 'general', completed: false },
     'category'
   );
 
@@ -39,7 +39,7 @@ const Todos: React.FC<ITodos> = ({
       const formattedTodoData = {
         name: todoData.name,
         completed: todoData.completed,
-        category: formatCategory?.categoryId,
+        category: formatCategory?.categoryId ? formatCategory?.categoryId : 0,
         createdAt: createdAt,
       };
 
@@ -48,8 +48,8 @@ const Todos: React.FC<ITodos> = ({
       makeRequest(url, 'POST', body).then(() => {
         setNewTodoAdded(true);
       });
-      setShowAddComponent(false)
-      setData('submited')
+      setShowAddComponent(false);
+      setData('submited');
     }
   };
   const isDisabled = (): boolean => {
@@ -97,6 +97,7 @@ const Todos: React.FC<ITodos> = ({
           category={task.categoryName}
           color={task.color}
           setNewTodoAdded={setNewTodoAdded}
+          categoryId={task.categoryId}
         />
       ))}
     </div>
