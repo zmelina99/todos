@@ -1,9 +1,10 @@
+@import '../../../styles/colors.scss', '../../../styles/fonts.scss';
+
 .Dropdown {
   position: relative;
   border-radius: 8px;
-  box-shadow: 0px 4px 4px 0px #000000;
+  box-shadow: 0px 2px 2px 0px $base-black;
 }
-
 .Dropdown__Input {
   background-color: white;
   border: none;
@@ -18,10 +19,6 @@
   &:hover {
     cursor: pointer;
   }
-
-  // &__ColorPalette{
-  //   justify-content: flex-end;
-  // }
 }
 
 .Dropdown__Options {
@@ -50,8 +47,9 @@
 }
 
 .color-palette {
-  padding: .5rem;
+  padding: 0.5rem;
   width: 1rem;
   height: 1rem;
-  margin: .5rem;justify-self: center;
+  margin: 0.5rem;
+  justify-self: center;
 }
