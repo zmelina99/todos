@@ -25,6 +25,8 @@ app.get('/todos/:id', getTodo);
 app.get('/categories', getCategories);
 
 app.get('/categories/:id', getCategory);
+app.post('/categories', categories.addCategory);
+
 
 //update a TODO
 app.put('/todos/:id', async (req, res) => {

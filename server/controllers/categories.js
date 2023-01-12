@@ -43,10 +43,10 @@ async function getCategory(req, res) {
 
 async function addCategory(req, res) {
   try {
-    const { name, color } = req.body.todoData;
+    const { name, color } = req.body.categoryData;
     //await waits for the function to complete before it continues
     const newTodo = await pool.query(
-      'INSERT INTO category(name, color) VALUES($1, $2) RETURNING *',
+      'INSERT INTO categories(category_name, color) VALUES($1, $2) RETURNING *',
       [name, color]
     );
     res.json(newTodo.rows[0]);

@@ -6,6 +6,7 @@ import { Todo } from '../../molecules/todo';
 import { ICategory, ITodo } from '../../App';
 import axios from 'axios';
 import AddComponent, { ITodoData } from '../addComponent/addComponent';
+import useFetch from '../../hooks/useFetch';
 
 interface ITodos {
   category: string;
@@ -21,27 +22,21 @@ const Todos: React.FC<ITodos> = ({ category, tasks, categories }) => {
     completed: false,
     category: 'default',
   });
+  const { makeRequest } = useFetch();
 
-  
   const addTodo = async () => {
-    try {
-      const formatCategory = categories.find(
-        (category) => category.categoryName === todoData.category
-      );
-      const formattedTodoData = {
-        name: todoData.name,
-        completed: todoData.completed,
-        category: formatCategory?.categoryId,
-      };
-      console.log(formattedTodoData);
-      const result = await axios.post(`http://localhost:5000/todos`, {
-        formattedTodoData,
-      });
-      return result.data;
-    } catch (error) {
-      console.log(error);
-    }
-  }; //Add to useApi hook
+    const formatCategory = categories.find(
+      (category) => category.categoryName === todoData.category
+    );
+    const formattedTodoData = {
+      name: todoData.name,
+      completed: todoData.completed,
+      category: formatCategory?.categoryId,
+    };
+    const url = 'http://localhost:5000/todos';
+    const body = { formattedTodoData };
+    makeRequest(url, 'POST', body);
+  };
 
   const setData = (data: any | string) => {
     if (typeof data === 'string') {
@@ -49,7 +44,8 @@ const Todos: React.FC<ITodos> = ({ category, tasks, categories }) => {
     } else setTodoData({ ...todoData, name: data?.target.value });
   };
 
-  const { Todos__Title, Todos__Header, Todos__Button, Todos__AddComponent } = styles;
+  const { Todos__Title, Todos__Header, Todos__Button, Todos__AddComponent } =
+    styles;
   return (
     <div className={styles.Todos}>
       <div className={Todos__Header}>
@@ -69,8 +65,10 @@ const Todos: React.FC<ITodos> = ({ category, tasks, categories }) => {
                 inputValue={todoData.name}
                 setData={setData}
                 addValues={addTodo}
-                dropdownOptions={categories.map((category) => category.categoryName)}
-                dropdownPlaceholder='Choose category'
+                dropdownOptions={categories.map(
+                  (category) => category.categoryName
+                )}
+                dropdownPlaceholder="Choose category"
               />
             </div>
           )}

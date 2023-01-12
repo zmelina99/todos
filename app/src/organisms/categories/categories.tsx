@@ -5,6 +5,7 @@ import { Button } from '../../atoms/button';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { AddComponent } from '../addComponent';
 import axios from 'axios';
+import useFetch from '../../hooks/useFetch';
 
 interface ICategories {
   categories: ICategory[];
@@ -32,17 +33,13 @@ const Categories: React.FC<ICategories> = ({
     name: '',
     color: 'pink',
   });
+  const { makeRequest } = useFetch();
 
   const addCategory = async () => {
-    try {
-      const result = await axios.post(`http://localhost:5000/categories`, {
-        categoryData,
-      });
-      return result.data;
-    } catch (error) {
-      console.log(error);
-    }
-  };//FIXME Add to useApi hook
+    const url = 'http://localhost:5000/categories';
+    const body = { categoryData};
+    makeRequest(url, 'POST', body);
+  };
 
   const setData = (data: any | string) => {
     if (typeof data === 'string') {
@@ -56,7 +53,6 @@ const Categories: React.FC<ICategories> = ({
     Categories__Category__Selected,
     Categories__Button,
   } = styles;
-  console.log(selectedCategory);
   return (
     <div className={styles.Categories}>
       <div

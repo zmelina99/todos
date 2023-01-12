@@ -3,6 +3,7 @@ import { Checkbox } from '../../atoms/checkbox';
 import { Category } from '../../atoms/category';
 import styles from './todo.module.scss';
 import axios from 'axios';
+import useFetch from '../../hooks/useFetch';
 
 interface ITodo {
   task: string;
@@ -14,18 +15,14 @@ interface ITodo {
 
 const Todo: React.FC<ITodo> = ({ task, id, isCompleted, category, color }) => {
   const [completed, setCompleted] = useState(isCompleted);
+  const { makeRequest } = useFetch();
 
   const changeTaskState = async () => {
     setCompleted(!completed);
-    try {
-      const result = await axios.put(`http://localhost:5000/todos/${id}`, {
-        completed: !completed,
-      });
-      return result.data;
-    } catch (error) {
-      console.log(error);
-    }
-  }; //FIXME Add to useApi hook
+    const url = `http://localhost:5000/todos/${id}`;
+    const body = { completed: !completed };
+    makeRequest(url, 'PUT', body);
+  };
 
   const { Todo__Checked, Todo__Task, Todo__Task__Checked } = styles;
   return (
