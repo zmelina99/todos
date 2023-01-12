@@ -3,10 +3,13 @@
 .Todos {
   height: 50vh;
   padding: 1rem;
+  width: 30rem;
+  position: relative;
 }
+
 .Todos__Header {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
 }
 .Todos__Title {
   margin-right: 1rem;
@@ -23,7 +26,10 @@
   font-weight: 600;
 }
 
-.Todos__AddTodo {
+.Todos__AddComponent{
   position: absolute;
-  margin-top: .5rem;
+  // top: 0;
+  right: 0;
+  z-index: 10;
+  margin: .5rem;
 }
