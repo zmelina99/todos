@@ -56,7 +56,7 @@ const Todos: React.FC<ITodos> = ({
     if (todoData.name.length >= 5) return false;
     else return true;
   };
-  const { Todos__Title, Todos__Header, Todos__Button, Todos__AddComponent } =
+  const { Todos__Title, Todos__Header, Todos__Button, Todos__AddComponent, Todos__TodosList } =
     styles;
   return (
     <div className={styles.Todos}>
@@ -88,18 +88,20 @@ const Todos: React.FC<ITodos> = ({
           )}
         </div>
       </div>
-      {tasks.map((task) => (
-        <Todo
-          key={task.todoId}
-          task={task.todoName}
-          isCompleted={task.completed}
-          id={task.todoId}
-          category={task.categoryName}
-          color={task.color}
-          setNewTodoAdded={setNewTodoAdded}
-          categoryId={task.categoryId}
-        />
-      ))}
+      <div className={Todos__TodosList}>
+        {tasks.map((task) => (
+          <Todo
+            key={task.todoId}
+            task={task.todoName}
+            isCompleted={task.completed}
+            id={task.todoId}
+            category={task.categoryName}
+            color={task.color}
+            setNewTodoAdded={setNewTodoAdded}
+            categoryId={task.categoryId}
+          />
+        ))}
+      </div>
     </div>
   );
 };

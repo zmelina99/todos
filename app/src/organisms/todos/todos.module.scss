@@ -5,11 +5,16 @@
   padding: 1rem;
   width: 30rem;
   position: relative;
+  overflow-y: scroll;
 }
 
 .Todos__Header {
   display: flex;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 10;
 }
 .Todos__Title {
   margin-right: 1rem;
@@ -26,10 +31,12 @@
   font-weight: 600;
 }
 
-.Todos__AddComponent{
+.Todos__AddComponent {
   position: absolute;
   // top: 0;
   right: 0;
   z-index: 10;
-  margin: .5rem;
+  margin: 0.5rem;
+}
+.Todos__TodosList {
 }
