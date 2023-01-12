@@ -111,7 +111,10 @@ function App() {
       {' '}
       {showModal && <Modal setShowModal={setShowModal} />}
       <div className={styles.App}>
-        <div className={App__Title}>{savedUsername}'s <br/>To do List</div>
+        <div className={App__Title}>
+          {savedUsername && `${savedUsername}'s`} <br />
+          To do List
+        </div>
         <div className={App__MainComponents}>
           <Categories
             categories={categories}

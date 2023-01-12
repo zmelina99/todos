@@ -1,8 +1,9 @@
+@import '../../../styles/colors.scss', '../../../styles/fonts.scss';
+
 .Modal {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
-
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -10,4 +11,26 @@
   align-items: center;
   z-index: 100;
   position: absolute;
+}
+.Modal__NameBox {
+  background-color: white;
+  padding: 2rem;
+  box-shadow: 0px 4px 4px 0px #000000;
+  border-radius: 8px;
+}
+.Modal__NameBox__Header {
+  display: flex;
+  flex-direction: column;
+}
+.Modal__Input {
+  padding: 0.5rem;
+  border: 1px solid $base-gray;
+  border-radius: 8px;
+  outline: none;
+}
+.Modal__NameBox__Footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 1rem 0;
 }

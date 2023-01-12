@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from '../../atoms/button';
 import styles from './modal.module.scss';
+import todos from '../../todos.png';
 
 interface IModal {
   setShowModal: any;
 }
 const Modal: React.FC<IModal> = ({ setShowModal }) => {
-  const { Modal__Title, Modal__Input } = styles;
+  const {
+    Modal__Title,
+    Modal__Input,
+    Modal__NameBox,
+    Modal__NameBox__Header,
+    Modal__NameBox__Footer,
+    Modal__NameBox__Footer__Button,
+  } = styles;
   const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
@@ -28,13 +36,27 @@ const Modal: React.FC<IModal> = ({ setShowModal }) => {
 
   return (
     <div className={styles.Modal}>
-      <h1 className={Modal__Title}>Please enter your name:</h1>
-      <input
-        className={Modal__Input}
-        value={inputValue}
-        onChange={handleInputChange}
-      />
-      <Button onClick={handleContinue} label="Continue" variant="primary" />
+      <div className={Modal__NameBox}>
+        <div className={Modal__NameBox__Header}>
+          <h1 className={Modal__Title}>Please enter your name:</h1>
+          <input
+            className={Modal__Input}
+            value={inputValue}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className={Modal__NameBox__Footer}>
+          <img src={todos} width="100px" />
+          <div className={Modal__NameBox__Footer__Button}>
+            {' '}
+            <Button
+              onClick={handleContinue}
+              label="Continue"
+              variant="primary"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
