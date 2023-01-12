@@ -33,12 +33,13 @@ const Todo: React.FC<ITodo> = ({
 
   const changeTaskState = async () => {
     setCompleted(!completed);
-    const url = `http://localhost:5000/todos/${id}`;
+    
+    const url = `${process.env.REACT_APP_URL}/todos/${id}`;
     const body = { completed: !completed };
     makeRequest(url, 'PUT', body);
   };
   const deleteTodo = async () => {
-    const url = `http://localhost:5000/todos/${id}`;
+    const url = `${process.env.REACT_APP_URL}/todos/${id}`;
     makeRequest(url, 'delete');
     setNewTodoAdded(true);
   };
@@ -49,7 +50,7 @@ const Todo: React.FC<ITodo> = ({
 
   const handleSave = () => {
     if (editedValue.length >= 5) {
-      const url = `http://localhost:5000/todos/${id}`;
+      const url = `${process.env.REACT_APP_URL}/todos/${id}`;
       const body = { name: editedValue };
       makeRequest(url, 'PUT', body);
       setEdit(!edit);

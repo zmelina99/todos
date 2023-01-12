@@ -7,7 +7,6 @@ app.use(cors());
 app.use(express.json()); //gives us access to request the body and get json data
 
 async function addTodos(req, res) {
-  console.log(req.body, 'body');
   try {
     const { name, category, createdAt } = req.body.formattedTodoData;
     //await waits for the function to complete before it continues
@@ -17,7 +16,6 @@ async function addTodos(req, res) {
     );
     res.json(newTodo.rows[0]);
     //$1 is a placeholder and desciption is going to be the value
-    console.log(req.body);
   } catch (err) {
     console.error(err.message);
   }
@@ -48,7 +46,6 @@ async function getTodo(req, res) {
 async function updateTodos(req, res) {
   //await waits for the function to complete before it continues
   try {
-    console.log(req.body);
     const { name, completed } = req.body;
     const { id } = req.params;
     if (name) {
@@ -58,7 +55,6 @@ async function updateTodos(req, res) {
       );
       res.json(updateTodo.rows[0]);
     } else {
-      console.log(completed);
       const updateTodoState = await pool.query(
         `UPDATE todo SET completed = $1 WHERE todo_id = $2`,
         [completed, id]

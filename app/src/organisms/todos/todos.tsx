@@ -23,7 +23,7 @@ const Todos: React.FC<ITodos> = ({
 }) => {
   const [showAddComponent, setShowAddComponent] = useState(false);
   const [todoData, setData] = useSetData(
-    { name: '', category: 'general', completed: false },
+    { name: '', category: 'default', completed: false },
     'category'
   );
 
@@ -43,7 +43,7 @@ const Todos: React.FC<ITodos> = ({
         createdAt: createdAt,
       };
 
-      const url = 'http://localhost:5000/todos';
+      const url = `${process.env.REACT_APP_URL}/todos`;
       const body = { formattedTodoData };
       makeRequest(url, 'POST', body).then(() => {
         setNewTodoAdded(true);

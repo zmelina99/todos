@@ -19,7 +19,7 @@ VALUES (2, 'sports', 'blue');
 
 
 INSERT INTO categories 
-VALUES ( 2,'green', 'sports');
+VALUES ( 0,'green', 'default');
 
 
 ALTER TABLE categories

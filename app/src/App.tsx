@@ -44,7 +44,7 @@ function App() {
   const [todos, setTodos] = useState<ITodo[]>([]);
   const [categories, setCategories] = useState<ICategory[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<ISelectedCategory>({
-    name: 'general',
+    name: 'default',
     id: 0,
   });
 
@@ -63,7 +63,7 @@ function App() {
   };
 
   const fetchCategories = async () => {
-    const result = await axios.get('http://localhost:5000/categories');
+    const result = await axios.get(`${process.env.REACT_APP_URL}/categories`);
     const formatResult: ICategory[] = result.data.map(
       (category: ICategoryResponse) => ({
         categoryName: category?.category_name,
@@ -112,7 +112,7 @@ function App() {
         />
         <Todos
           category={
-            selectedCategory.name === 'general'
+            selectedCategory.name === 'default'
               ? 'All tasks'
               : selectedCategory.name
           }

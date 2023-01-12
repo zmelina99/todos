@@ -43,7 +43,7 @@ const Categories: React.FC<ICategories> = ({
 
   const addCategory = async () => {
     if (categoryData.name.length >= 5) {
-      const url = 'http://localhost:5000/categories';
+      const url = `${process.env.REACT_APP_URL}/categories`;
       const body = { categoryData };
       makeRequest(url, 'POST', body).then(() => {
         setNewCategoryAdded(true);
@@ -64,7 +64,7 @@ const Categories: React.FC<ICategories> = ({
         className={`${
           selectedCategory.id === 0 && Categories__Default
         } ${Categories__Category}`}
-        onClick={() => setSelectedCategory({ name: 'general', id: 0 })}
+        onClick={() => setSelectedCategory({ name: 'default', id: 0 })}
       >
         All tasks
       </div>
@@ -83,7 +83,7 @@ const Categories: React.FC<ICategories> = ({
               })
             }
           >
-            {category.categoryName !== 'General' && category.categoryName}
+            {category.categoryName !== 'default' && category.categoryName}
           </div>
         );
       })}
