@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Categories } from './organisms/categories';
 import styles from './app.module.scss';
 import { Todos } from './organisms/todos';
+import { DropdownSelect } from './molecules/dropdownSelect';
 
 export interface ICategory {
   categoryName: string;
@@ -76,6 +77,12 @@ function App() {
   const { App__Title, App__MainComponents } = styles;
   return (
     <div className={styles.App}>
+      <DropdownSelect
+        dropdownOptions={['a', 'b']}
+        onCallback={() => console.log('hello')}
+        style={{ width: 'fit-content' }}
+        optionsStyle={{ width: 'fit-content' }}
+      />
       <div className={App__Title}>To do List</div>
       <div className={App__MainComponents}>
         <Categories

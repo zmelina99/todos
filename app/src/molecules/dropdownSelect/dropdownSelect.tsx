@@ -7,6 +7,7 @@ export interface IDropdown {
   placeholder?: string;
   style?: React.CSSProperties;
   onCallback(option: string): void;
+  optionsStyle?: React.CSSProperties;
 }
 
 const DropdownSelectComponent: React.FC<IDropdown> = ({
@@ -14,6 +15,7 @@ const DropdownSelectComponent: React.FC<IDropdown> = ({
   placeholder,
   style,
   onCallback,
+  optionsStyle,
 }) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedOption, setSelectedOption] = useState(
@@ -68,7 +70,7 @@ const DropdownSelectComponent: React.FC<IDropdown> = ({
         <ChevronDown />
       </div>
       {showDropdown && (
-        <div className={Dropdown__Options} ref={menuRef}>
+        <div className={Dropdown__Options} ref={menuRef} style={optionsStyle}>
           {dropdownOptions.map((option: string) => (
             <div
               key={option}

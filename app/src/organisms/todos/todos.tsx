@@ -3,8 +3,9 @@ import styles from './todos.module.scss';
 import { Button } from '../../atoms/button';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { Todo } from '../../molecules/todo';
-import { AddTodo } from '../addTodo';
 import { ICategory, ITodo } from '../../App';
+import axios from 'axios';
+import AddComponent, { ITodoData } from '../addComponent/addComponent';
 
 interface ITodos {
   category: string;
@@ -13,8 +14,40 @@ interface ITodos {
 }
 
 const Todos: React.FC<ITodos> = ({ category, tasks, categories }) => {
-  const [showAddTodo, setShowAddTodo] = useState(false);
-  const { Todos__Title, Todos__Header, Todos__Button, Todos__AddTodo } = styles;
+  const [showAddComponent, setShowAddComponent] = useState(false);
+
+  const [todoData, setTodoData] = useState<ITodoData>({
+    name: '',
+    completed: false,
+    category: 'default',
+  });
+  const addTodo = async () => {
+    try {
+      const formatCategory = categories.find(
+        (category) => category.categoryName === todoData.category
+      );
+      const formattedTodoData = {
+        name: todoData.name,
+        completed: todoData.completed,
+        category: formatCategory?.categoryId,
+      };
+      console.log(formattedTodoData);
+      const result = await axios.post(`http://localhost:5000/todos`, {
+        formattedTodoData,
+      });
+      return result.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const setData = (data: any | string) => {
+    if (typeof data === 'string') {
+      setTodoData({ ...todoData, category: data });
+    } else setTodoData({ ...todoData, name: data?.target.value });
+  };
+  
+  const { Todos__Title, Todos__Header, Todos__Button, Todos__AddComponent } = styles;
   return (
     <div className={styles.Todos}>
       <div className={Todos__Header}>
@@ -24,11 +57,18 @@ const Todos: React.FC<ITodos> = ({ category, tasks, categories }) => {
             variant="primary"
             label="Add Todo"
             icon={<AiOutlinePlus />}
-            onClick={() => setShowAddTodo(!showAddTodo)}
+            onClick={() => setShowAddComponent(!showAddComponent)}
           />
-          {showAddTodo && (
-            <div className={Todos__AddTodo}>
-              <AddTodo categories={categories} />
+          {showAddComponent && (
+            <div className={Todos__AddComponent}>
+              <AddComponent
+                categories={categories}
+                title={'Add New Todo!'}
+                inputLabel={'Todo Name'}
+                inputValue={todoData.name}
+                setData={setData}
+                addValues={addTodo}
+              />
             </div>
           )}
         </div>
