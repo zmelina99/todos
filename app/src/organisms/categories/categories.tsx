@@ -21,6 +21,7 @@ const Categories: React.FC<ICategories> = ({
     Categories__Category__Selected,
     Categories__Button,
   } = styles;
+  console.log(selectedCategory)
   return (
     <div className={styles.Categories}>
       <div
@@ -29,7 +30,7 @@ const Categories: React.FC<ICategories> = ({
         } ${Categories__Category}`}
         onClick={() => setSelectedCategory({ name: 'default', id: 0 })}
       >
-        All Tasks
+       All tasks
       </div>
       {categories.map((category) => {
         console.log(category.categoryId, 'me', selectedCategory.id);

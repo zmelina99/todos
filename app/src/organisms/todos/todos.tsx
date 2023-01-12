@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './todos.module.scss';
 import { Button } from '../../atoms/button';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { Todo } from '../../molecules/todo';
-import axios from 'axios';
 import { AddTodo } from '../addTodo';
 import { ICategory, ITodo } from '../../App';
 

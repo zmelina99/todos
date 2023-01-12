@@ -73,7 +73,6 @@ function App() {
     fetchCategories();
   }, []);
 
-  console.log(todos, selectedCategory);
   const { App__Title, App__MainComponents } = styles;
   return (
     <div className={styles.App}>
@@ -85,7 +84,11 @@ function App() {
           selectedCategory={selectedCategory}
         />
         <Todos
-          category={'all tasks'}
+          category={
+            selectedCategory.name === 'default'
+              ? 'All tasks'
+              : selectedCategory.name
+          }
           tasks={
             selectedCategory.id !== 0
               ? todos.filter((todo) => todo.categoryId === selectedCategory.id)

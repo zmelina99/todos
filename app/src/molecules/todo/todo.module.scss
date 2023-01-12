@@ -5,15 +5,12 @@
   width: fit-content;
   align-items: center;
   margin: .5rem;
-
-  &__Checked {
-    color: $base-red;
-  }
 }
+
 .Todo__Task {
   padding: 0 1rem;
 
   &__Checked {
-    text-decoration: line-through;
+    text-decoration: line-through;    color: $base-red;
   }
 }

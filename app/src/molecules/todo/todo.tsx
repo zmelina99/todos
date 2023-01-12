@@ -30,7 +30,7 @@ const Todo: React.FC<ITodo> = ({ task, id, isCompleted, category }) => {
   const { Todo__Checked, Todo__Task, Todo__Task__Checked } = styles;
   return (
     <div className={`${styles.Todo} ${completed && Todo__Checked}`}>
-      <Checkbox checked={completed} onChecked={changeTaskState} id={id} />
+      <Checkbox checked={completed} onChecked={changeTaskState} />
       <span className={`${Todo__Task} ${completed && Todo__Task__Checked}`}>
         {task}
       </span>

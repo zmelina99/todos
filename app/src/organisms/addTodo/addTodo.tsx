@@ -1,5 +1,5 @@
-import axios from 'axios';
 import React, { useState } from 'react';
+import axios from 'axios';
 import { ICategory } from '../../App';
 import { Button } from '../../atoms/button';
 import { DropdownSelect } from '../../molecules/dropdownSelect';
@@ -28,7 +28,7 @@ const AddTodo: React.FC<IAddTodo> = ({ categories }) => {
         completed: todoData.completed,
         category: formatCategory?.categoryId,
       };
-      console.log(formattedTodoData)
+      console.log(formattedTodoData);
       const result = await axios.post(`http://localhost:5000/todos`, {
         formattedTodoData,
       });
@@ -68,6 +68,7 @@ const AddTodo: React.FC<IAddTodo> = ({ categories }) => {
           onCallback={(option) =>
             setTodoData({ ...todoData, category: option })
           }
+          placeholder="Select category"
         />
       </div>
       <Button label="Add" onClick={addTodo} />
