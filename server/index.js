@@ -9,10 +9,10 @@ const categories = require('./controllers/categories');
 app.use(cors());
 app.use(express.json()); //gives us access to request the body and get json data
 
-const { addTodos, getTodos, getTodo } = todos;
-const { getCategories, getCategory } = categories;
-//routes
+const { addTodos, getTodos, getTodo, updateTodos, deleteTodos } = todos;
+const { getCategories, getCategory, addCategory } = categories;
 
+//routes
 //create a TODO
 app.post('/todos', addTodos);
 
@@ -22,52 +22,22 @@ app.get('/todos', getTodos);
 //get a TODO
 app.get('/todos/:id', getTodo);
 
-app.get('/categories', getCategories);
-
-app.get('/categories/:id', getCategory);
-app.post('/categories', categories.addCategory);
-
-
 //update a TODO
-app.put('/todos/:id', async (req, res) => {
-  //await waits for the function to complete before it continues
-  try {
-    console.log(req.body)
-    const { name, completed } = req.body;
-    const { id } = req.params;
-    if (name) {
-      const updateTodo = await pool.query(
-        `UPDATE todo SET todo_name = $1 WHERE todo_id = $2`,
-        [name, id]
-      );
-      res.json(updateTodo.rows[0]);
-    } else {
-      console.log(completed)
-      const updateTodoState = await pool.query(
-        `UPDATE todo SET completed = $1 WHERE todo_id = $2`,
-        [completed, id]
-      );
-      res.json(updateTodoState.rows[0]);
-    }
-    console.log('updated');
-  } catch (err) {
-    console.error(err.message);
-  }
-});
+app.put('/todos/:id', updateTodos);
 
 //delete a TODO
-app.delete('/todos/:id', async (req, res) => {
-  //await waits for the function to complete before it continues
-  try {
-    const { id } = req.params;
-    const deleteTodo = await pool.query(
-      `DELETE FROM todo WHERE todo_id = ${id}`
-    );
-    res.json('todo deleted');
-  } catch (err) {
-    console.error(err.message);
-  }
-});
+app.delete('/todos/:id', deleteTodos);
+
+//get all categories
+app.get('/categories', getCategories);
+
+//get one category
+app.get('/categories/:id', getCategory);
+
+//create a new category
+app.post('/categories', addCategory);
+
+
 
 app.listen(5000, () => {
   console.log('Server running in port 5000');
