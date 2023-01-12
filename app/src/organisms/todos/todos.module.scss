@@ -2,10 +2,11 @@
 
 .Todos {
   height: 50vh;
-  padding: 1rem;
+  padding: .5rem;
   width: 30rem;
   position: relative;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .Todos__Header {
