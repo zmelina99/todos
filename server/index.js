@@ -4,6 +4,7 @@ const cors = require('cors');
 const pool = require('./db');
 const todos = require('./controllers/todos');
 const categories = require('./controllers/categories');
+const port = process.env.PORT || 5000;
 
 //middleware
 app.use(cors());
@@ -39,6 +40,6 @@ app.post('/categories', addCategory);
 
 
 
-app.listen(5000, () => {
-  console.log('Server running in port 5000');
+app.listen(port, () => {
+  console.log(`Server running in port ${port}`);
 }); //initiates the server on the 5000 port
