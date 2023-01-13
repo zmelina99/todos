@@ -1,0 +1,55 @@
+@import '../../../styles/colors.scss', '../../../styles/fonts.scss';
+
+.Dropdown {
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 0px 2px 2px 0px $base-black;
+}
+.Dropdown__Input {
+  background-color: white;
+  border: none;
+  outline: none;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  width: 9rem;
+  align-items: center;
+  text-transform: capitalize;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.Dropdown__Options {
+  background-color: white;
+  width: 9rem;
+  position: absolute;
+  z-index: 10;
+  margin-top: 0.5rem;
+  border-radius: 8px;
+  padding: 0.5rem;
+  text-transform: capitalize;
+}
+.Dropdown__Options__Option {
+  padding: 0.5rem 0;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: $base-gray;
+    cursor: pointer;
+  }
+}
+
+.Dropdown__Input.parentWidth,
+.Dropdown__Options.parentWidth {
+  width: 100%;
+}
+
+.color-palette {
+  padding: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+  margin: 0.5rem;
+  justify-self: center;
+}

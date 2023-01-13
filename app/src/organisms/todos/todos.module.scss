@@ -1,0 +1,37 @@
+@import '../../../styles/colors.scss', '../../../styles/fonts.scss';
+
+.Todos {
+  height: 50vh;
+  padding: .5rem;
+  width: 30rem;
+  position: relative;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.Todos__Header {
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 10;
+  width: 100%;
+}
+.Todos__Title {
+  @include mediumFont;
+  margin-right: 1rem;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+}
+.Categories__Category__Selected {
+  font-weight: 600;
+}
+
+.Todos__AddComponent {
+  position: absolute;
+  right: 0;
+  z-index: 10;
+  margin: 0.5rem;
+}
+

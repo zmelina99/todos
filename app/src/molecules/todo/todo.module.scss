@@ -1,0 +1,45 @@
+@import '../../../styles/colors.scss', '../../../styles/fonts.scss';
+
+.Todo {
+  @include x-smallFont;
+  display: flex;
+  padding: 0.25rem;
+  align-items: center;
+  width: 100%;
+  margin: 0.25rem;
+  border-radius: 8px;
+  &:hover {
+    box-shadow: 0px 2px 2px 0px $base-black;
+  }
+}
+
+.Todo__Task {
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border: 1px solid $base-gray;
+  margin: 0.5rem;
+  border-radius: 8px;
+  width: 100%;
+
+  &__Checked {
+    text-decoration: line-through;
+    color: $base-red;
+  }
+  &:disabled {
+    background-color: transparent;
+    border: none;
+    outline: none;
+  }
+}
+.Todo__Actions {
+  display: flex;
+}
+.Todo__ActionButton {
+  border: none;
+  background-color: transparent;
+  &:hover {
+    cursor: pointer;
+  }
+}

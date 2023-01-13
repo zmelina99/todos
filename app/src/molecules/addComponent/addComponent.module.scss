@@ -1,0 +1,40 @@
+@import '../../../styles/colors.scss', '../../../styles/fonts.scss';
+
+.AddComponent {
+  @include x-smallFont;
+
+  box-shadow: 0px 2px 2px 0px $base-black;
+  width: 10rem;
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: white;
+  border: 1px solid #eb5757;
+}
+.AddComponent__Header {
+  @include smallFont;
+
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.AddComponent__Header__Icon {
+  border: none;
+  background-color: transparent;
+  padding: none;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.AddComponent__Input {
+  padding: 0.5rem;
+  border: 1px solid $base-gray;
+  border-radius: 8px;
+  outline: none;
+}
+.AddComponent__Categories {
+  margin: 1rem 0;
+}
