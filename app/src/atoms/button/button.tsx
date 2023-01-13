@@ -3,11 +3,8 @@ import styles from './button.module.scss';
 
 type ButtonProps = {
   variant?: 'primary' | 'secondary';
-
   icon?: ReactNode;
   color?: 'solid' | 'gradient';
-
-
   label: string;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 const Button: React.FC<ButtonProps> = ({

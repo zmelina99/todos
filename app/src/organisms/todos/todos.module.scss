@@ -18,12 +18,14 @@
   z-index: 10;
   width: 100%;
 }
+
 .Todos__Title {
   @include mediumFont;
   margin-right: 1rem;
   text-transform: capitalize;
   margin-bottom: 1rem;
 }
+
 .Categories__Category__Selected {
   font-weight: 600;
 }

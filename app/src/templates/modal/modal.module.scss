@@ -13,22 +13,26 @@
   position: absolute;
   font-family: $mainFont;
 }
+
 .Modal__NameBox {
   background-color: white;
   padding: 2rem;
   box-shadow: 0px 2px 2px 0px $base-black;
   border-radius: 8px;
 }
+
 .Modal__NameBox__Header {
   display: flex;
   flex-direction: column;
 }
+
 .Modal__Input {
   padding: 0.5rem;
   border: 1px solid $base-gray;
   border-radius: 8px;
   outline: none;
 }
+
 .Modal__NameBox__Footer {
   display: flex;
   justify-content: space-between;

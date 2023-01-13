@@ -10,8 +10,8 @@ import useSetData from '../../hooks/useData';
 interface ICategories {
   categories: ICategory[];
   selectedCategory: ISelectedCategory;
-  setSelectedCategory:  React.Dispatch<React.SetStateAction<any>>;
-  setNewCategoryAdded:  React.Dispatch<React.SetStateAction<any>>;
+  setSelectedCategory: React.Dispatch<React.SetStateAction<any>>;
+  setNewCategoryAdded: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const colors = [

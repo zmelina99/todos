@@ -1,6 +1,5 @@
 import React from 'react';
 import { ICategory } from '../../App';
-
 import styles from './category.module.scss';
 
 const Category: React.FC<ICategory> = ({ categoryName, color }) => {

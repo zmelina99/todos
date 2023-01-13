@@ -23,7 +23,7 @@ const Modal: React.FC<IModal> = ({ setShowModal }) => {
       setInputValue(savedValue);
       setShowModal(false);
     }
-  }, []);
+  }, [setShowModal]);
 
   const handleInputChange = (event: any) => {
     setInputValue(event.target.value);

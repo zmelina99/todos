@@ -19,14 +19,13 @@ const DropdownSelectComponent: React.FC<IDropdown> = ({
   optionsStyle,
   type = 'default',
 }) => {
-
   const {
     Dropdown,
     Dropdown__Input,
     Dropdown__Options,
     Dropdown__Options__Option,
   } = styles;
-
+  
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedOption, setSelectedOption] = useState(
     placeholder || (dropdownOptions ? dropdownOptions[0] : '')
