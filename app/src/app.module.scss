@@ -12,16 +12,16 @@
   border-image: $base-gradient 1;
   overflow: hidden;
 }
+
 .App__Title {
   text-align: left;
   text-transform: uppercase;
   overflow: hidden;
   @include largeFont;
 }
+
 .App__MainComponents {
   display: flex;
-
   box-shadow: 0px 2px 2px 0px $base-black;
-
   border: 0.5px solid rgb(208, 202, 202);
 }

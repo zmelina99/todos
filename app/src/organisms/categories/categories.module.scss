@@ -9,6 +9,7 @@
   position: relative;
   width:15rem;
 }
+
 .Categories__Category {
   text-transform: capitalize;
   padding: 0.5rem;
@@ -17,9 +18,11 @@
     cursor: pointer;
   }
 }
+
 .Categories__Default {
   font-weight: 600;
 }
+
 .Categories__Category__Selected {
   font-weight: 600;
 }

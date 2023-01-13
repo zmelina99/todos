@@ -12,6 +12,7 @@
   background-color: white;
   border: 1px solid #eb5757;
 }
+
 .AddComponent__Header {
   @include smallFont;
   margin-bottom: 1rem;
@@ -19,6 +20,7 @@
   justify-content: space-between;
   align-items: flex-end;
 }
+
 .AddComponent__Header__Icon {
   border: none;
   background-color: transparent;
@@ -27,12 +29,14 @@
     cursor: pointer;
   }
 }
+
 .AddComponent__Input {
   padding: 0.5rem;
   border: 1px solid $base-gray;
   border-radius: 8px;
   outline: none;
 }
+
 .AddComponent__Categories {
   margin: 1rem 0;
 }
