@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './categories.module.scss';
 import { ICategory, ISelectedCategory } from '../../App';
 import { Button } from '../../atoms/button';

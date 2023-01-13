@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Categories } from './organisms/categories';
 import styles from './app.module.scss';
 import { Todos } from './organisms/todos';
-import MyModal from './templates/modal/modal';
 import Modal from './templates/modal/modal';
 
 export interface ICategory {
