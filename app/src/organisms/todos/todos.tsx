@@ -12,7 +12,7 @@ interface ITodos {
   category: string;
   tasks: ITodo[];
   categories: ICategory[];
-  setNewTodoAdded: any;
+  setNewTodoAdded:  React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Todos: React.FC<ITodos> = ({
