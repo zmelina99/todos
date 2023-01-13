@@ -7,7 +7,7 @@ interface IAddComponent {
   title: string;
   inputLabel: string;
   inputValue: string;
-  setData: any;
+  setData:  React.Dispatch<React.SetStateAction<boolean>>;
   addValues(): void;
   dropdownOptions: string[];
   dropdownType?: 'color-palette' | 'default';

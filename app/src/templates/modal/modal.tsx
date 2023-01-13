@@ -4,7 +4,7 @@ import styles from './modal.module.scss';
 import todos from '../../todos.png';
 
 interface IModal {
-  setShowModal: any;
+  setShowModal:  React.Dispatch<React.SetStateAction<boolean>>;
 }
 const Modal: React.FC<IModal> = ({ setShowModal }) => {
   const {
