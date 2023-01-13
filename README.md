@@ -15,7 +15,7 @@ The user can add different categories and todos
 
 ### Client 
 1. cd app and npm i 
-2. Add .env file and add this wariable: REACT_APP_URL, the value should be the url your server is running at 
+2. Add .env file and add this variable: REACT_APP_URL, the value should be the url your server is running at 
 3. run npm run start 
 
 ## Take a look!
