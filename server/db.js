@@ -25,8 +25,10 @@ CREATE TABLE IF NOT EXISTS todo (
 );
 `;
 
-const queryString =
-  "INSERT INTO categories (category_name, color) VALUES ('Groceries', 'blue')";
+const queryString = `
+INSERT INTO categories (category_name, color)
+  SELECT 'Groceries', 'blue'
+  WHERE NOT EXISTS (SELECT 1 FROM categories WHERE category_name='Groceries');`;
 
 pool.query(categoriesTable, (err, res) => {
   if (err) {
