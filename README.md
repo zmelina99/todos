@@ -17,3 +17,7 @@ The user can add different categories and todos
 1. cd app and npm i 
 2. Add .env file and add this wariable: REACT_APP_URL, the value should be the url your server is running at 
 3. run npm run start 
+
+## Take a look!
+<img width="1384" alt="Screenshot 2023-01-13 at 01 37 05" src="https://user-images.githubusercontent.com/72397189/212238852-ff7f8abd-b745-44ad-8bf7-7bace83fe24a.png">
+<img width="1433" alt="Screenshot 2023-01-13 at 01 39 50" src="https://user-images.githubusercontent.com/72397189/212238854-c3c2ef68-211c-449f-a532-75e76ba119d8.png">
