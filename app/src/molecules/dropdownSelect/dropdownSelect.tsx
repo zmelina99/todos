@@ -1,4 +1,3 @@
-import { ChevronDown } from '@clearmix/design-system';
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './dropdownSelect.module.scss';
 
