@@ -13,7 +13,7 @@ interface ITodo {
   id: number;
   category: string;
   color?: string;
-  setNewTodoAdded: any;
+  setNewTodoAdded: React.Dispatch<React.SetStateAction<boolean>>;
   categoryId: number;
 }
 

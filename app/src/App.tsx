@@ -1,10 +1,9 @@
-import { useCallback, useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Categories } from './organisms/categories';
 import styles from './app.module.scss';
 import { Todos } from './organisms/todos';
-import MyModal from './templates/modal/modal';
 import Modal from './templates/modal/modal';
+import axios from 'axios';
 
 export interface ICategory {
   categoryName: string;

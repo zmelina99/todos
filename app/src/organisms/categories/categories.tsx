@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './categories.module.scss';
 import { ICategory, ISelectedCategory } from '../../App';
 import { Button } from '../../atoms/button';
@@ -10,8 +10,8 @@ import useSetData from '../../hooks/useData';
 interface ICategories {
   categories: ICategory[];
   selectedCategory: ISelectedCategory;
-  setSelectedCategory: any;
-  setNewCategoryAdded: any;
+  setSelectedCategory:  React.Dispatch<React.SetStateAction<any>>;
+  setNewCategoryAdded:  React.Dispatch<React.SetStateAction<any>>;
 }
 
 const colors = [

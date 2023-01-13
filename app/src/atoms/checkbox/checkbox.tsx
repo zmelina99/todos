@@ -9,7 +9,7 @@ type ICheckbox = {
 const Checkbox: React.FC<ICheckbox> = ({ checked, onChecked }) => {
   const { Checkbox__CheckedIcon } = styles;
   return (
-    <div className={styles.Checkbox} onClick={() => onChecked()}>
+    <div className={styles.Checkbox} onClick={() => onChecked()} role='checkbox'>
       {checked && (
         <span className={Checkbox__CheckedIcon}>
           {<AiOutlineCheck color="#27AE60" size="1.5rem" />}

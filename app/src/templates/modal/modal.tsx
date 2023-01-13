@@ -4,7 +4,7 @@ import styles from './modal.module.scss';
 import todos from '../../todos.png';
 
 interface IModal {
-  setShowModal: any;
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 const Modal: React.FC<IModal> = ({ setShowModal }) => {
   const {
@@ -31,7 +31,7 @@ const Modal: React.FC<IModal> = ({ setShowModal }) => {
   };
 
   const handleContinue = () => {
-    setShowModal(false);
+    if (inputValue.length) setShowModal(false);
   };
 
   return (
@@ -46,7 +46,7 @@ const Modal: React.FC<IModal> = ({ setShowModal }) => {
           />
         </div>
         <div className={Modal__NameBox__Footer}>
-          <img src={todos} width="100px" alt='todo-list'/>
+          <img src={todos} width="100px" alt="todo-list" />
           <div className={Modal__NameBox__Footer__Button}>
             {' '}
             <Button

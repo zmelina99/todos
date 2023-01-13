@@ -1,5 +1,5 @@
-import { ChevronDown } from '@clearmix/design-system';
 import React, { useEffect, useRef, useState } from 'react';
+import { AiOutlineDown } from 'react-icons/ai';
 import styles from './dropdownSelect.module.scss';
 
 export interface IDropdown {
@@ -72,7 +72,7 @@ const DropdownSelectComponent: React.FC<IDropdown> = ({
         }
       >
         {type === 'color-palette' ? placeholder : selectedOption}
-        <ChevronDown />
+        <AiOutlineDown />
       </div>
       {showDropdown && (
         <div

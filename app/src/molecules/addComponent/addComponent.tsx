@@ -7,7 +7,7 @@ interface IAddComponent {
   title: string;
   inputLabel: string;
   inputValue: string;
-  setData: any;
+  setData: React.Dispatch<React.SetStateAction<any>>;
   addValues(): void;
   dropdownOptions: string[];
   dropdownType?: 'color-palette' | 'default';
@@ -48,6 +48,7 @@ const AddComponent: React.FC<IAddComponent> = ({
         <button
           className={AddComponent__Header__Icon}
           onClick={closeAddComponent}
+          data-testid="CloseButton"
         >
           <AiOutlineClose size="20px" />
         </button>
