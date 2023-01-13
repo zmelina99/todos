@@ -2,11 +2,8 @@
 
 const Pool = require('pg').Pool;
 
-const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  port: 5432, 
-  database: 'perntodo'
-});
+const { DB_DEPLOY, PORT, DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
-module.exports = pool
+const pool = new Pool(DB_DEPLOY);
+
+module.exports = pool;
