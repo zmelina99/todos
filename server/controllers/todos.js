@@ -28,7 +28,7 @@ async function getTodos(req, res) {
     );
 
     res.json(allTodos.rows);
-  } catch {
+  } catch(err) {
     console.error(err.message);
   }
 }
