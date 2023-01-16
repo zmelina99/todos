@@ -1,7 +1,7 @@
 import React from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { Button } from '../../atoms/button';
-import { DropdownSelect } from '../dropdownSelect';
+import { DropdownSelect } from '../../atoms/dropdownSelect';
 import styles from './addComponent.module.scss';
 interface IAddComponent {
   title: string;
